@@ -24,7 +24,10 @@ function s_domain_standards() {
             /loc/.test(domain) || /dev/.test(domain) ? env = "dev" : /stage/.test(domain) && (env = "qa");
             domainExt == "au" ? profile = "australia" : domainExt == "ca" ? profile = "canada" : domainExt == "fr" ? profile = "france" : domainExt == "de" ? profile = "germany" : domainExt == "ie" ? profile = "ireland" : domainExt == "it" ? profile = "italy" : domainExt == "com" ? profile = "main" : domainExt == "mx" ? profile = "mexico" : domainExt == "pl" ? profile = "poland" : domainExt == "se" ? profile = "sweden" : domainExt == "uk" && (profile = "unitedkingdom")
         } catch (e) {}
-        a = "//tags.tiqcdn.com/utag/ancestry/" + profile + "/" + env + "/utag.js";
+        
+        //a = "//tags.tiqcdn.com/utag/ancestry/" + profile + "/" + env + "/utag.js";
+        // file://tags.tiqcdn.com/utag/ancestry/main/prod/utag.js
+        a = "./zhisanerm family view - ancestry.com_files/utag.js";
         b = document;
         c = "script";
         d = b.createElement(c);

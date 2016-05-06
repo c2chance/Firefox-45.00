@@ -1,0 +1,896 @@
+@charset "utf-8";
+@font-face {
+    font-family: "ancestry-icon";
+    src: url("../../font/v1/28/ancestry-icon.woff2") format("woff2"),
+    url("../../font/v1/28/ancestry-icon.woff") format("woff"),
+    url("../../font/v1/28/ancestry-icon.ttf") format("truetype"),
+    url("../../font/v1/28/ancestry-icon.svg#icon") format("svg")
+}
+
+.icon::before,.iconAfter::after {
+    font: normal 107%/0 "ancestry-icon";
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    speak: none;
+    text-transform: none;
+    top: .075em
+}
+
+.icon::before {
+    margin-right: .25em
+}
+
+.icon:empty::before {
+    margin-right: 0
+}
+
+.iconAfter::after {
+    margin-left: .25em
+}
+
+.iconMenu::before {
+    content: ""
+}
+
+.iconCrop::before {
+    content: ""
+}
+
+.iconSearch::before {
+    content: ""
+}
+
+.iconZoomOut::before {
+    content: ""
+}
+
+.iconZoomIn::before {
+    content: ""
+}
+
+.iconDna::before {
+    content: ""
+}
+
+.iconTemple::before {
+    content: ""
+}
+
+.iconFamilySearch::before {
+    content: ""
+}
+
+.iconFamilySearch2::before {
+    content: ""
+}
+
+.iconStar::before {
+    content: ""
+}
+
+.iconStarHalf::before {
+    content: ""
+}
+
+.iconStarOutline::before {
+    content: ""
+}
+
+.iconClock::before {
+    content: ""
+}
+
+.iconEye::before {
+    content: ""
+}
+
+.iconArrowLargeRight::before {
+    content: ""
+}
+
+.iconFlipVertical-2::before,.iconFlipVertical2::before {
+    content: ""
+}
+
+.iconFlipHorizontal-2::before,.iconFlipHorizontal2::before {
+    content: ""
+}
+
+.iconInvert::before {
+    content: ""
+}
+
+.iconExpand::before {
+    content: ""
+}
+
+.iconMove::before {
+    content: ""
+}
+
+.iconFlipVertical::before {
+    content: ""
+}
+
+.iconFlipHorizontal::before {
+    content: ""
+}
+
+.iconSync::before {
+    content: ""
+}
+
+.iconWebLink::before {
+    content: ""
+}
+
+.iconArrowBack::before {
+    content: ""
+}
+
+.iconMerge::before {
+    content: ""
+}
+
+.iconStory::before {
+    content: ""
+}
+
+.iconStories::before {
+    content: ""
+}
+
+.iconRewind::before {
+    content: ""
+}
+
+.iconPlay::before {
+    content: ""
+}
+
+.iconPause::before {
+    content: ""
+}
+
+.iconStop::before {
+    content: ""
+}
+
+.iconFastForward::before {
+    content: ""
+}
+
+.iconVideo::before {
+    content: ""
+}
+
+.iconVolumeMin::before {
+    content: ""
+}
+
+.iconVolumeMedium::before {
+    content: ""
+}
+
+.iconVolumeMax::before {
+    content: ""
+}
+
+.iconAudio::before {
+    content: ""
+}
+
+.iconUpload::before {
+    content: ""
+}
+
+.iconSave::before {
+    content: ""
+}
+
+.iconFolder::before {
+    content: ""
+}
+
+.iconDownload::before {
+    content: ""
+}
+
+.iconStore::before {
+    content: ""
+}
+
+.iconSupport::before {
+    content: ""
+}
+
+.iconInfo::before {
+    content: ""
+}
+
+.iconPrint::before {
+    content: ""
+}
+
+.iconNoteAlt::before {
+    content: ""
+}
+
+.iconMilitary::before {
+    content: ""
+}
+
+.iconList::before {
+    content: ""
+}
+
+.iconNewWindow::before {
+    content: ""
+}
+
+.iconLike::before {
+    content: ""
+}
+
+.iconDislike::before {
+    content: ""
+}
+
+.iconFlag::before {
+    content: ""
+}
+
+.iconShare::before {
+    content: ""
+}
+
+.iconHeart::before {
+    content: ""
+}
+
+.iconPerson::before {
+    content: ""
+}
+
+.iconPersonAdd::before {
+    content: ""
+}
+
+.iconPersonFind::before {
+    content: ""
+}
+
+.iconPeople::before {
+    content: ""
+}
+
+.iconCustomerSupport::before {
+    content: ""
+}
+
+.iconMessageBoard::before {
+    content: ""
+}
+
+.iconReportError::before {
+    content: ""
+}
+
+.iconBeginThread::before {
+    content: ""
+}
+
+.iconChat::before {
+    content: ""
+}
+
+.iconTag::before {
+    content: ""
+}
+
+.iconMinus::before {
+    content: ""
+}
+
+.iconPlus::before {
+    content: ""
+}
+
+.iconClose::before {
+    content: ""
+}
+
+.iconDenied::before {
+    content: ""
+}
+
+.iconRotateRight::before {
+    content: ""
+}
+
+.iconRotateLeft::before {
+    content: ""
+}
+
+.iconEdit::before {
+    content: ""
+}
+
+.iconBookmark::before {
+    content: ""
+}
+
+.iconPin::before {
+    content: ""
+}
+
+.iconCart::before {
+    content: ""
+}
+
+.iconCamera::before {
+    content: ""
+}
+
+.iconInbox::before {
+    content: ""
+}
+
+.iconMailSent::before {
+    content: ""
+}
+
+.iconFamily::before {
+    content: ""
+}
+
+.iconCalculator::before {
+    content: ""
+}
+
+.iconBell::before {
+    content: ""
+}
+
+.iconGallery::before {
+    content: ""
+}
+
+.iconCreditCard::before {
+    content: ""
+}
+
+.iconCalendar::before {
+    content: ""
+}
+
+.iconWarning::before {
+    content: ""
+}
+
+.iconAttachment::before {
+    content: ""
+}
+
+.iconEmail::before {
+    content: ""
+}
+
+.iconDocumentAdd::before {
+    content: ""
+}
+
+.iconDocument::before {
+    content: ""
+}
+
+.iconDocumentPdf::before {
+    content: ""
+}
+
+.iconDocumentExcel::before {
+    content: ""
+}
+
+.iconDocumentWord::before {
+    content: ""
+}
+
+.iconNote::before {
+    content: ""
+}
+
+.iconHome::before {
+    content: ""
+}
+
+.iconCenter::before {
+    content: ""
+}
+
+.iconTreeAdd::before {
+    content: ""
+}
+
+.iconTreePedigree::before {
+    content: ""
+}
+
+.iconTreeFamily::before {
+    content: ""
+}
+
+.iconLightbulb::before {
+    content: ""
+}
+
+.iconPhone::before {
+    content: ""
+}
+
+.iconProfileCard::before {
+    content: ""
+}
+
+.iconMap::before {
+    content: ""
+}
+
+.iconRemove::before {
+    content: ""
+}
+
+.iconAdd::before {
+    content: ""
+}
+
+.iconImage::before {
+    content: ""
+}
+
+.iconSettings::before {
+    content: ""
+}
+
+.iconTrash::before {
+    content: ""
+}
+
+.iconUnlock::before {
+    content: ""
+}
+
+.iconLock::before {
+    content: ""
+}
+
+.iconMale::before {
+    content: ""
+}
+
+.iconFemale::before {
+    content: ""
+}
+
+.iconTools::before {
+    content: ""
+}
+
+.iconUnlink::before {
+    content: ""
+}
+
+.iconLink::before {
+    content: ""
+}
+
+.iconDrag::before {
+    content: ""
+}
+
+.iconTileLarge::before {
+    content: ""
+}
+
+.iconTileSmall::before {
+    content: ""
+}
+
+.iconBirth::before {
+    content: ""
+}
+
+.iconMarriage::before {
+    content: ""
+}
+
+.iconDeath::before {
+    content: ""
+}
+
+.iconAcademy::before {
+    content: ""
+}
+
+.iconFilmstrip::before {
+    content: ""
+}
+
+.iconMobile::before {
+    content: ""
+}
+
+.iconDnaMatch::before {
+    content: ""
+}
+
+.iconDnaCad::before {
+    content: ""
+}
+
+.iconExpandRight::before {
+    content: ""
+}
+
+.iconCollapseRight::before {
+    content: ""
+}
+
+.iconVisibilityOn::before {
+    content: ""
+}
+
+.iconVisibilityOff::before {
+    content: ""
+}
+
+.iconHighlight::before {
+    content: ""
+}
+
+.iconFtm::before {
+    content: ""
+}
+
+.iconPersonList::before {
+    content: ""
+}
+
+.iconLeaf::before,.iconLeaf2::before,.iconShakyLeaf::before {
+    color: #648200;
+    content: ""
+}
+
+.iconLeafOutline::before {
+    color: #648200;
+    content: ""
+}
+
+.iconArchives::before {
+    color: #1e1f1c;
+    content: ""
+}
+
+.iconFindAGrave::before {
+    color: #60527e;
+    content: ""
+}
+
+.iconFold3::before {
+    color: #c24139;
+    content: ""
+}
+
+.iconNewspapers::before {
+    color: #000;
+    content: ""
+}
+
+.iconAcom::before {
+    color: #afbc22;
+    content: ""
+}
+
+.iconTwitter::before {
+    color: #59bff0;
+    content: ""
+}
+
+.iconTumblr::before {
+    color: #2c4762;
+    content: ""
+}
+
+.iconGooglePlus::before {
+    color: #dd4b37;
+    content: ""
+}
+
+.iconYoutube::before {
+    color: #dd473b;
+    content: ""
+}
+
+.iconPinterest::before {
+    color: #cc2127;
+    content: ""
+}
+
+.iconFacebook::before {
+    color: #3b5999;
+    content: ""
+}
+
+.iconRss::before {
+    color: #e98300;
+    content: ""
+}
+
+.iconColor1::before {
+    color: #bebbb3
+}
+
+.icon.bgDark::before {
+    color: inherit
+}
+
+.iconHelp::before,.iconHelpAfter::after {
+    content: ""
+}
+
+.iconCheck::before,.iconAfterCheck::after {
+    content: ""
+}
+
+.iconArrowSmallUpAfter::after,.iconArrowSmallUp::before {
+    content: ""
+}
+
+.iconArrowSmallDownAfter::after,.iconArrowSmallDown::before {
+    content: ""
+}
+
+.iconArrowSmallLeftAfter::after,.iconArrowSmallLeft::before {
+    content: ""
+}
+
+.iconArrowSmallRightAfter::after,.iconArrowSmallRight::before {
+    content: ""
+}
+
+.iconArrowUpAfter::after,.iconArrowUp::before {
+    content: ""
+}
+
+.iconArrowRightAfter::after,.iconArrowRight::before {
+    content: ""
+}
+
+.iconArrowLeftAfter::after,.iconArrowLeft::before {
+    content: ""
+}
+
+.iconArrowDownAfter::after,.iconArrowDown::before {
+    content: ""
+}
+
+.iconArrowRightAfter::after {
+    margin-left: 4px
+}
+
+@-webkit-keyframes grow {
+    0%,50% {
+        -webkit-transform: scale(0,0)
+    }
+
+    100% {
+        -webkit-transform: scale(1,1)
+    }
+}
+
+@-webkit-keyframes shake {
+    25% {
+        -webkit-transform: rotate(-10deg)
+    }
+
+    50% {
+        -webkit-transform: rotate(0deg)
+    }
+
+    75% {
+        -webkit-transform: rotate(10deg)
+    }
+}
+
+@keyframes grow {
+    0%,50% {
+        transform: scale(0,0)
+    }
+
+    100% {
+        transform: scale(1,1)
+    }
+}
+
+@keyframes shake {
+    25% {
+        transform: rotate(-10deg)
+    }
+
+    50% {
+        transform: rotate(0deg)
+    }
+
+    75% {
+        transform: rotate(10deg)
+    }
+}
+
+.iconShakyLeaf::before {
+    -webkit-animation: grow 1.4s,shake .3s linear 1.5s 3;
+    animation: grow 1.4s,shake .3s linear 1.5s 3;
+    display: inline-block;
+    line-height: 1;
+    -webkit-transform-origin: 0% 100%;
+    transform-origin: 0% 100%
+}
+
+.icon.iconBars::after {
+    font-size: 107%
+}
+
+.iconBars::before,.iconBars::after {
+    font-family: "ancestry-icon";
+    font-weight: normal;
+    left: 0;
+    line-height: 1em;
+    position: absolute;
+    speak: none;
+    text-transform: none;
+    top: .04em
+}
+
+.iconBars {
+    margin: 0 auto;
+    min-height: 1.25em;
+    padding-left: 1.25em;
+    position: relative
+}
+
+.iconBars::before {
+    content: "";
+    opacity: .3
+}
+
+.iconBarsLow::before {
+    content: ""
+}
+
+.iconBarsMed::before {
+    content: ""
+}
+
+.iconBarsHigh::before {
+    content: ""
+}
+
+.iconBars.iconBarsLow::before {
+    content: ""
+}
+
+.iconBars.iconBarsLow::after {
+    content: ""
+}
+
+.iconBars.iconBarsMed::before {
+    content: ""
+}
+
+.iconBars.iconBarsMed::after {
+    content: ""
+}
+
+.iconBars.iconBarsHigh::after {
+    content: ""
+}
+
+.iconBars.iconBarsHigh::before {
+    content: ""
+}
+
+.iconFlushText {
+    display: inline-block;
+    padding-left: 1.498em;
+    text-indent: -1.498em
+}
+
+.iconFlushText::before {
+    display: inline-block;
+    line-height: 1;
+    margin-right: 0;
+    text-indent: 0;
+    width: 1.4em
+}
+
+.iconLeafImage::before {
+    background: url("/i/v1/leaf-30.png") no-repeat 50% 50%;
+    background-size: 100% auto;
+    content: "";
+    display: inline-block;
+    height: 30px;
+    vertical-align: -6px;
+    width: 30px
+}
+
+.iconLeafImageSize1::before {
+/*    background-image: url("/i/v1/leaf-50.png");*/
+    background-image: url("../../../i/v1/leaf-50.png");
+    height: 50px;
+    width: 50px
+}
+
+.iconLeafImageSize2::before {
+    background-image: url("/i/v1/leaf-100.png");
+    height: 100px;
+    width: 100px
+}
+
+.iconLeafImageSize3::before {
+    background-image: url("/i/v1/leaf-140.png");
+    height: 140px;
+    width: 140px
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),(min-resolution:144dpi),(min-resolution:1.5dppx) {
+    .iconLeafImage::before {
+        background-image:url("/i/v1/leaf-30-2x.png")
+    }
+
+    .iconLeafImageSize1::before {
+        background-image: url("/i/v1/leaf-50-2x.png")
+    }
+
+    .iconLeafImageSize2::before {
+        background-image: url("/i/v1/leaf-100-2x.png")
+    }
+
+    .iconLeafImageSize3::before {
+        background-image: url("/i/v1/leaf-140-2x.png")
+    }
+}
+
+.iconLeafImagePinned {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    z-index: 1
+}
+
+a.icon,button.icon,.icon:active,.icon:focus,.icon:hover,p .icon,a.iconAfter,button.iconAfter,.iconAfter:active,.iconAfter:focus,.iconAfter:hover,p .iconAfter {
+    text-decoration: none
+}
+
+.icon.underline>span,p .link.icon>span,p a.icon>span,.link.icon:focus>span,.link.icon:hover>span,.link.icon:active>span,a.icon:focus>span,a.icon:hover>span,a.icon:active>span,.iconAfter.underline>span,p .link.iconAfter>span,p a.iconAfter>span,.link.iconAfter:focus>span,.link.iconAfter:hover>span,.link.iconAfter:active>span,a.iconAfter:focus>span,a.iconAfter:hover>span,a.iconAfter:active>span {
+    text-decoration: underline
+}
+
+@media print {
+    .iconLeafImage::before {
+        background: none!important;
+        content: url("/i/v1/leaf-30.png")!important;
+        z-index: 10
+    }
+
+    .iconLeafImageSize1::before {
+        content: url("/i/v1/leaf-50.png")!important
+    }
+
+    .iconLeafImageSize2::before {
+        content: url("/i/v1/leaf-100.png")!important
+    }
+
+    .iconLeafImageSize3::before {
+        content: url("/i/v1/leaf-140.png")!important
+    }
+}

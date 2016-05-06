@@ -1,6 +1,7 @@
 window.treesScreenType = function (type) {
     return type === "large-screen" ? $(".responsiveFlag").css("text-align") === "center" : type === "not-large-screen" ? $(".responsiveFlag").css("text-align") === "left" : type === "tablet-portrait" ? $(".responsiveFlag").css("position") === "relative" : type === "smart-phone" ? $(".responsiveFlag").css("visibility") === "visible" : type === "smart-phone-portrait" ? $(".responsiveFlag").css("text-align") === "right" : void 0
 };
+
 $(function () {
     $(".calloutAddFamily").each(function () {
         var $this = $(this),
@@ -22,6 +23,7 @@ $(function () {
         })
     })
 });
+
 var endDragCanvas = !1,
     $hideTimeOut;
 //
@@ -81,25 +83,39 @@ $trees.TreeMapObject.prototype = {
     movAnimTimer: -1,
     cacheUrl: "",
     extendedGraphOffset: 0,
-    init: function (viewportDivId, canvasDivId, controlsDivId, focusPid, focusNodeId, changeFocusUrlTemplate, viewProfileUrlTemplate, printUrlTemplate, viewerType, cache) {
+    
+    init: function (viewportDivId, canvasDivId, controlsDivId, focusPid, focusNodeId, changeFocusUrlTemplate, 
+        viewProfileUrlTemplate, printUrlTemplate, viewerType, cache) {
         var dom;
-        this.viewerType = viewerType;
+        this.viewerType = viewerType; // "family"
         "pedigree" == viewerType && (this.scaleFactor = 140);
+        
         dom = YAHOO.util.Dom;
+        
         this.viewportDivId = viewportDivId;   // trVp
-        this.viewportEl = dom.get(viewportDivId);
-        this.setViewportDimensions();
-        this.canvasEl = dom.get(canvasDivId); // trGraph
+        this.viewportEl = dom.get(viewportDivId); // div#trVp.trVp.openhand
+        this.setViewportDimensions(); // return a region that is occupied by the DOM element
+        this.canvasEl = dom.get(canvasDivId); // canvasDivId = trGraph, canvasEl = div#trGraph.trGraph
         this.controlsDivId = controlsDivId;   // trVwHd
-        this.changeFocusUrlTemplate = decodeURI(changeFocusUrlTemplate);
-        this.viewProfileUrlTemplate = decodeURI(viewProfileUrlTemplate);
-        this.printUrlTemplate = decodeURI(printUrlTemplate);
+        // changeFocusUrlTemplate  ::  'http://trees.ancestry.com/tree/81749066/family?cfpid=%7Bcfpid%7D'
+        this.changeFocusUrlTemplate = decodeURI(changeFocusUrlTemplate); // "http://trees.ancestry.com/tree/81749066/family?cfpid={cfpid}"
+        // viewProfileUrlTemplate  ::  'http://trees.ancestry.com/tree/81749066/person/%7Bpid%7D'
+        this.viewProfileUrlTemplate = decodeURI(viewProfileUrlTemplate); // "http://trees.ancestry.com/tree/81749066/person/{pid}"
+        // printUrlTemplate        ::  'http://trees.ancestry.com/tree/81749066/person/42446045903/familyview/print'
+        this.printUrlTemplate = decodeURI(printUrlTemplate); // "http://trees.ancestry.com/tree/81749066/person/42446045903/familyview/print"
         var transformEl = document.getElementById(canvasDivId),
             transformSt = window.getComputedStyle(transformEl, null),
             trMatrix = transformSt.getPropertyValue("-webkit-transform") || transformSt.getPropertyValue("-moz-transform") || transformSt.getPropertyValue("-ms-transform") || transformSt.getPropertyValue("-o-transform") || transformSt.getPropertyValue("transform") || "fail...",
             values = trMatrix.split("(")[1];
+            // transformEl == div#trGraph.trGraph
+            // transformSt ==  CSS2Properties { 0="align-content",  1="align-items",  2="align-self",  更多...}
+            // trMatrix ==  "matrix(0.4, 0, 0, 0.4, 0, 0)"
+            // values == 	"0.4, 0, 0, 0.4, 0, 0)"
         values = values.split(")")[0];
+        // values ==	"0.4, 0, 0, 0.4, 0, 0"
         values = values.split(",");
+        // values = "0.4", " 0", " 0", 3 更多... == ["0.4", " 0", " 0", "0.4", " 0", " 0"] length=6
+        //   convert to a Array
         var scaleX = values[0],
             skewX = values[1],
             skewY = values[2],
@@ -107,16 +123,28 @@ $trees.TreeMapObject.prototype = {
             translateX = values[4],
             translateY = values[5];
         this.zoomLevel = scaleX / this.scaleMax;
+        // this.zoomLevel = 0.4 / 1 = 0.4
         this.left = parseInt(this.canvasEl.style.left, 10) / this.zoomLevel / this.scaleFactor;
+        // 346.167px --> 130 / 0.4 / 130 = 6.653846153856154
         isNaN(this.left) && (this.left = 0);
         this.top = parseInt(this.canvasEl.style.top, 10) / this.zoomLevel / this.scaleFactor;
+        // 101.167px --> 101 / 0.4 / 130 == 1.9423076923076923
         isNaN(this.top) && (this.top = 0);
         this.focusNodeEl = dom.get(focusNodeId);
-        this.disableSelection(this.viewportEl);
-        this.cacheUrl = cache;
+        // dom.get("42446045903:0") 
+        // div#42446045903:0.node.male.focus.nodeFamily
+        this.disableSelection(this.viewportEl); // this.viewportEl == div#trVp.trVp.openhand
+        // Disable selection of text content within the set of matched elements. 
+        //   version added: 1.6 deprecated: 1.9
+        this.cacheUrl = cache; // "http://c.mfcreative.com/TRE_ATW/4.2.2874.2874/cdn/treemap" 
+        
         var gesturesInWindows = !1,
             viewportDiv = $("#" + viewportDivId)[0],
             pinchDistance = 0;
+            // false
+            // viewportDiv = div#trVp.trVp.openhand
+            
+        // #trVp.on()    
         $("#" + viewportDivId).on("pointertouchmousedown", function (e) {
             $trees.treeMap.startDragCanvas(e)
         }).on("MSGestureStart gesturestart", function () {
@@ -129,9 +157,12 @@ $trees.TreeMapObject.prototype = {
             endDragCanvas = !1;
             $(".pullToFullScreen").removeClass("gestureing")
         });
+        
+        // div#trVp.trVp.openhand . addEventListener
         viewportDiv.addEventListener("touchstart", function (e) {
             gesturesInWindows === !1 && (e.touches.length > 1 ? ($(".pullToFullScreen").addClass("gestureing"), pinchDistance = Math.sqrt(Math.pow(e.touches[1].pageX - e.touches[0].pageX, 2) + Math.pow(e.touches[1].pageY - e.touches[0].pageY, 2)), endDragCanvas = !0) : pinchDistance = 0)
         });
+        
         viewportDiv.addEventListener("touchmove", function (e) {
             if (gesturesInWindows === !1) {
                 var newDistance = Math.sqrt(Math.pow(e.touches[1].pageX - e.touches[0].pageX, 2) + Math.pow(e.touches[1].pageY - e.touches[0].pageY, 2)),
@@ -140,10 +171,13 @@ $trees.TreeMapObject.prototype = {
                 if (!window.treesScreenType("smart-phone") || $("body").hasClass("treeViewerAwesomeNavigating")) return scale >= 1 ? ($trees.toolbar.zoomInCB(), e.stopPropagation(), !1) : ($trees.toolbar.zoomOutCB(), e.stopPropagation(), !1)
             }
         });
+        
         viewportDiv.addEventListener("touchend", function () {
             gesturesInWindows === !1 && (endDragCanvas = !1, $(".pullToFullScreen").removeClass("gestureing"), pinchDistance <= 0)
         });
+        
         YAHOO.util.Event.addListener(window, "scroll", this.scrollWindow, this, !0);
+        
         this.zoomEvent = new YAHOO.util.CustomEvent("treemapzoom");
         this.panEvent = new YAHOO.util.CustomEvent("treemappan");
         this.dragEndEvent = new YAHOO.util.CustomEvent("treemapdragend");
@@ -152,12 +186,14 @@ $trees.TreeMapObject.prototype = {
             top: parseFloat(this.canvasEl.style.top) + this.extendedGraphOffset
         }])
     },
+    
     getFocusCenter: function () {
         return this.focusNodeEl != null ? this.getFocusCenterEx(this.focusNodeEl) : {
             x: 0,
             y: 0
         }
     },
+    
     getFocusCenterId: function (fnId) {
         if (fnId != null) {
             var focusNode_El = YAHOO.util.Dom.get(fnId);
@@ -168,6 +204,7 @@ $trees.TreeMapObject.prototype = {
             y: 0
         }
     },
+    
     getFocusCenterEx: function (focusnode_e1) {
         var centerX = 0,
             centerY = 0,
@@ -177,6 +214,7 @@ $trees.TreeMapObject.prototype = {
             y: centerY
         }
     },
+    
     getFocusPosition: function (nodeId, expansionlevel) {
         var focusPosX = 0,
             focusPosY = 0,
@@ -186,6 +224,7 @@ $trees.TreeMapObject.prototype = {
             y: focusPosY
         }
     },
+    
     getFocusPositionEx: function (nodeId, expDim) {
         var focusPosX = 0,
             focusPosY = 0,
@@ -218,6 +257,7 @@ $trees.TreeMapObject.prototype = {
             y: focusPosY
         }
     },
+    
     showNodeFocusAnim: function (nodeIdArray) {
         var areaBoundries = {
                 left: 0,
@@ -231,12 +271,14 @@ $trees.TreeMapObject.prototype = {
         focusPos = this.getFocusPositionEx(nodeIdArray[0].toString(), areaBoundries);
         focusPos.x != 0 && focusPos.y != 0 && this.focusOnPointAnimEx($trees.treeMap.zoomLevel, focusPos.x, focusPos.y)
     },
+    
     getNodeFromPid: function (pid) {
         var nodes = $("[class*=node]");
         return jQuery.each(nodes, function (index, node) {
             if (node.getAttribute("t:pid") == pid) return node
         }), null
     },
+    
     getNodesFromPid: function (pid) {
         var nodes = $("[class*=node]"),
             nodeArr = [],
@@ -245,6 +287,7 @@ $trees.TreeMapObject.prototype = {
             node.getAttribute("t:pid") == pid && (nodeArr[i] = node, i++)
         }), nodeArr.length > 0) ? nodeArr : null
     },
+    
     setViewportDimensions: function () {
         var region = YAHOO.util.Dom.getRegion(this.viewportEl);
         this.viewportX = region.left;
@@ -252,17 +295,21 @@ $trees.TreeMapObject.prototype = {
         this.viewportWidth = region.width;
         this.viewportHeight = region.height
     },
+    
     getCanvasZoom: function () {
         return this.zoomLevel * this.scaleFactor
     },
+    
     getCanvasLeft: function () {
         var left = this.zoomLevel * this.scaleFactor * this.left;
         return isNaN(left) && (left = 0), left
     },
+    
     getCanvasTop: function () {
         var top = this.zoomLevel * this.scaleFactor * this.top;
         return isNaN(top) && (top = 0), top
     },
+    
     setZoomLevel: function (zoomLevel, fireEvent) {
         zoomLevel != 0 && (this.zoomLevel = zoomLevel, $canvasEl = $(this.canvasEl), $canvasEl.css({
             "-webkit-transform": "scale(" + zoomLevel + ")",
@@ -272,6 +319,7 @@ $trees.TreeMapObject.prototype = {
             zoomLevel: zoomLevel
         }))
     },
+    
     setPosition: function (left, top, fireEvent) {
         isNaN(left) && (left = 0);
         isNaN(top) && (top = 0);
@@ -290,15 +338,18 @@ $trees.TreeMapObject.prototype = {
             top: parseFloat(posTop) + this.extendedGraphOffset
         }])
     },
+    
     setScroll: function (top) {
         top && window.scrollTo(0, top)
     },
+    
     updatePan: function () {
         this.panEvent.fire({
             left: this.left,
             top: this.top
         })
     },
+    
     setPositionAnim: function (left, top) {
         var movSpeed, newleft, newtop;
         if (this.dragInProgress === !0) {
@@ -324,6 +375,7 @@ $trees.TreeMapObject.prototype = {
             }
         } else this.setPosition(newleft, newtop, !1), this.clearPositionMoveAnim()
     },
+    
     clearPositionMoveAnim: function () {
         this.moveInProgress === !0 && (this.moveInProgress = !1, this.movAnimTimer != -1 && (clearTimeout(this.movAnimTimer), this.movAnimTimer = -1));
         this.panEvent.fire({
@@ -331,6 +383,7 @@ $trees.TreeMapObject.prototype = {
             top: this.top
         })
     },
+    
     zoomOnPoint: function (zoomLevel, x, y, fireEvent) {
         if (zoomLevel != 0) {
             var myLeft = (x + this.left) * this.zoomLevel / zoomLevel - x,
@@ -338,6 +391,7 @@ $trees.TreeMapObject.prototype = {
             (myLeft != this.left || myTop != this.top || zoomLevel != this.zoomLevel) && (this.setZoomLevel(zoomLevel, fireEvent), this.setPosition(myLeft, myTop, fireEvent))
         }
     },
+    
     setZoom: function (zoomLevel, viewportX, viewportY) {
         var canvasPosition = this.translateToCanvasCoordinates(viewportX, viewportY),
             canvasMax = this.translateToCanvasCoordinates(this.viewportWidth, this.viewportHeight),
@@ -348,26 +402,32 @@ $trees.TreeMapObject.prototype = {
         positiony = Math.min(canvasPosition.y, canvasMax.y);
         zoomLevel >= this.minZoom && zoomLevel <= this.maxZoom + this.liftZoom && this.zoomOnPoint(zoomLevel, positionx, positiony, !0)
     },
+    
     changeZoom: function (increase, viewportX, viewportY) {
         var zoom;
         increase ? (zoom = this.zoomLevel + this.zoomIncrement, zoom > this.maxZoom && (zoom = this.maxZoom)) : (zoom = this.zoomLevel - this.zoomIncrement, zoom < this.minZoom && (zoom = this.minZoom));
         this.setZoom(zoom, viewportX, viewportY)
     },
+    
     zoomOnCenter: function (zoomLevel) {
         this.setZoom(zoomLevel, this.viewportWidth / 2, this.viewportHeight / 2)
     },
+    
     zoomIn: function () {
         this.changeZoom(!0, this.viewportWidth / 2, this.viewportHeight / 2)
     },
+    
     zoomOut: function () {
         this.changeZoom(!1, this.viewportWidth / 2, this.viewportHeight / 2)
     },
+    
     focusOnPoint: function (zoomLevel, focusx, focusy) {
         var viewportWidth = this.viewportWidth / this.scaleFactor / zoomLevel,
             viewportHeight = this.viewportHeight / this.scaleFactor / zoomLevel;
         this.setZoomLevel(zoomLevel, !0);
         this.setPosition(viewportWidth / 2 - focusx, viewportHeight / 2 - focusy, !0)
     },
+    
     focusOnPointAnim: function (zoomLevel, focusx, focusy) {
         var viewportWidth, viewportHeight, endX, endY;
         if (this.dragInProgress === !0 || this.moveInProgress === !0) {
@@ -381,6 +441,7 @@ $trees.TreeMapObject.prototype = {
         endY = viewportHeight / 2 - focusy;
         this.setPositionAnim(endX, endY)
     },
+    
     focusOnPointAnimEx: function (zoomLevel, focusx, focusy) {
         if (this.dragInProgress === !0 || this.moveInProgress === !0) {
             this.clearPositionMoveAnim();
@@ -388,17 +449,24 @@ $trees.TreeMapObject.prototype = {
         }
         this.setPositionAnim(focusx, focusy)
     },
+    
     translateToViewportCoordinates: function (x, y) {
         var retValues = {};
         return retValues.X = this.scaleFactor * this.zoomLevel * (x + this.left), retValues.Y = this.scaleFactor * this.zoomLevel * (y + this.top), retValues
     },
+    
     translateToCanvasCoordinates: function (X, Y) {
         var retValues = {};
         return retValues.x = X / this.scaleFactor / this.zoomLevel - this.left, retValues.y = Y / this.scaleFactor / this.zoomLevel - this.top, retValues
     },
+    
     startDragCanvas: function (e) {
+        // e = m.Event {type: "pointertouchmousedown", pageX: 264, pageY: 170, originalEvent: m.Event, timeStamp: 1461644008030…}
         var viewportId = this.viewportEl.id;
+        // this: $trees.TreeMapObject, this.viewportEl: div#trVp.trVp.closehand
+        var viewportId = this.viewportEl.id; 
         if (e.target != null) {
+            // 枚举 #trVwHd #thumbnav #trHover .expandTree .viewTreeExtender .familyList 之 length != 0
             if ($(e.target).closest("#" + this.controlsDivId + ", #thumbNav, #trHover, .expandTree, .viewTreeExtender, .familyList").length != 0) return;
             this.startDragPosition = this.getViewportMousePosition(e);
             this.startDragTopLeft = {
@@ -411,14 +479,27 @@ $trees.TreeMapObject.prototype = {
             }).on("pointertouchmouseup", function (e) {
                 $trees.treeMap.endDragCanvas(e)
             });
+            // <div id = trVp class = trVp openhand->closehand 
+            // viewportEl: div#trVp.trVp.closehand
             $(this.viewportEl).removeClass("openhand").addClass("closehand");
             $("body").addClass("draggingTreeView");
             this.dragInProgress = !0
         }
     },
+    
     endDragCanvas: function (e) {
-        if (this.dragInProgress) return this.dragInProgress = !1, $(document).off("pointertouchmousemove").off("pointertouchmouseup"), this.startDragPosition = null, this.dragFilter = null, this.dragEndEvent.fire({}), $(this.viewportEl).removeClass("closehand").addClass("openhand"), $("body").removeClass("draggingTreeView"), e.preventDefault ? e.preventDefault() : e.returnValue = !1, !1
+        // 
+        if (this.dragInProgress) 
+            return this.dragInProgress = !1, 
+                $(document).off("pointertouchmousemove").off("pointertouchmouseup"), 
+                this.startDragPosition = null, 
+                this.dragFilter = null, 
+                this.dragEndEvent.fire({}), 
+                $(this.viewportEl).removeClass("closehand").addClass("openhand"), 
+                $("body").removeClass("draggingTreeView"), 
+                e.preventDefault ? e.preventDefault() : e.returnValue = !1, !1
     },
+    
     dragCanvas: function (e) {
         if (this.dragInProgress) {
             var viewportPosition = this.getViewportMousePosition(e),
@@ -427,12 +508,15 @@ $trees.TreeMapObject.prototype = {
             return this.setPosition(left, top, !0), e.preventDefault ? e.preventDefault() : e.returnValue = !1, !1
         }
     },
+    
     checkDragCanvas: function (e) {
         if (this.dragInProgress) {
+            // Yahoo.util.Event.getTarget() 
             var target = YAHOO.util.Event.getTarget(e);
             if (target != null && target.id == "Content-2" || endDragCanvas === !0) return this.endDragCanvas(e)
         }
     },
+    
     getMousePosition: function (e) {
         var position = YAHOO.util.Event.getXY(e);
         return {
@@ -440,6 +524,7 @@ $trees.TreeMapObject.prototype = {
             y: position[1]
         }
     },
+    
     getViewportMousePosition: function (e) {
         var absPos = this.getMousePosition(e),
             X = absPos.x - this.viewportX,
@@ -449,13 +534,16 @@ $trees.TreeMapObject.prototype = {
             y: Y
         }
     },
+    
     scrollWindow: function () {
         this.setWindowScroll();
         this.scrollEvent.fire()
     },
+    
     expandCollapse: function () {
         for (var element, i = 0; i < arguments.length; i++) element = document.getElementById(arguments[i]), element != null && (element.style.display = element.style.display == "none" ? "" : "none")
     },
+    
     hasParent: function (el, divIdName, stopDivIdName) {
         el = el.parentElement || el.parentNode;
         for (var i = 0; i < 100; i++) {
@@ -466,15 +554,19 @@ $trees.TreeMapObject.prototype = {
         }
         return !1
     },
+    
     print: function () {
         var printable = window.open(this.printUrlTemplate, "")
     },
+    
     changeFocusPerson: function (fpid) {
         document.location.href = this.changeFocusUrlTemplate.replace("{cfpid}", fpid.toString())
     },
+    
     viewProfilePage: function (fpid) {
         document.location.href = this.viewProfileUrlTemplate.replace("{pid}", fpid.toString())
     },
+    
     getFocusNodeCenter: function (focusNodeEl) {
         var dim = this.getNodeDimensions(focusNodeEl);
         return {
@@ -484,6 +576,7 @@ $trees.TreeMapObject.prototype = {
             h: dim.height
         }
     },
+    
     getNodeDimensions: function (nodeEl) {
         var nodeLeft = parseFloat(nodeEl.style.left),
             nodeTop, nodeWidth, nodeHeight;
@@ -494,6 +587,7 @@ $trees.TreeMapObject.prototype = {
             height: nodeHeight
         }
     },
+    
     getExpansionDimensions: function (expansionDiv) {
         var expTop = parseFloat(expansionDiv.getAttribute("t:top")),
             expLeft, expRight, expBottom;
@@ -506,11 +600,13 @@ $trees.TreeMapObject.prototype = {
             height: expBottom - expTop
         }
     },
+    
     setWindowScroll: function () {
         var tmpScrollTop = 0;
         typeof pageYOffset == "number" ? tmpScrollTop = window.pageYOffset : document.body && (document.body.scrollLeft || document.body.scrollTop) ? tmpScrollTop = document.body.scrollTop : document.documentElement && (document.documentElement.scrollLeft || document.documentElement.scrollTop) && (tmpScrollTop = document.documentElement.scrollTop);
         this.windowScrollTop = tmpScrollTop
     },
+    
     disableSelection: function (target) {
         typeof target.onselectstart != "undefined" ? target.onselectstart = function () {
             return !1
@@ -518,9 +614,11 @@ $trees.TreeMapObject.prototype = {
             return !1
         }
     },
+    
     showInviteeWelcome: function (url) {
         YAHOO.util.Connect.asyncRequest("GET", url, this.showInviteeWelcomeCallback)
     },
+    
     showInviteeWelcomeCallback: {
         success: function (o) {
             var res = eval("(" + o.responseText + ")"),
@@ -554,6 +652,7 @@ $trees.TreeMapObject.prototype = {
 $trees.treeMapCreate = function (viewportDivId, canvasDivId, controlsDivId, focusPid, focusNodeId, changeFocusUrlTemplate, viewProfileUrlTemplate, printUrlTemplate, viewerType, cache) {
     "undefined" == typeof $trees.treeMap && ($trees.treeMap = new $trees.TreeMapObject(viewportDivId, canvasDivId, controlsDivId, focusPid, focusNodeId, changeFocusUrlTemplate, viewProfileUrlTemplate, printUrlTemplate, viewerType, cache))
 };
+
 $trees.displayNodeOptions = function () {
     var calloutAlignment = "bottom";
     $trees.treeMap.viewerType == "pedigree" && (calloutAlignment = "right");
@@ -592,6 +691,7 @@ $trees.displayNodeOptions = function () {
         }
     })
 };
+
 $trees.displayHintCount = function (source) {
     var hintsCount = $(source).attr("t:hints");
     if (source && hintsCount && hintsCount > 0) {
@@ -602,9 +702,11 @@ $trees.displayHintCount = function (source) {
         $(source).find(".node-bdy div.itemCount").html(hintsCount).show()
     }
 };
+
 $trees.hideHintCount = function (source) {
     $(source).find(".node-bdy div.itemCount").hide()
 };
+
 $trees.bindHover = function () {
     $("#trGraph .node").each(function () {
         $(this).hover(function () {
@@ -614,17 +716,21 @@ $trees.bindHover = function () {
         })
     })
 };
+
 $trees.bind = function () {
     $trees.bindHover();
     $(".hoverCallout").length > 0 && $trees.displayNodeOptions()
 };
+
 $trees.bindHoverOnExtend = function () {
     $(".node .node-bdy").off("mouseenter mouseleave");
     $trees.bind()
 };
+
 $trees.deselect = function () {
     document.selection ? document.selection.empty() : window.getSelection && window.getSelection().removeAllRanges()
 };
+
 $(function () {
     var resizeTimer;
     $("html").on("click", "body:not(.treeViewerAwesomeNavigating) #trVwHd, body:not(.treeViewerAwesomeNavigating) #thumbNav", function (e) {
@@ -654,9 +760,19 @@ $(function () {
         }, 250)
     })
 });
+
+//  $trees.toolbarCreate('81749066', 'trVp', 42446045903, 42446045903, false, '', 'pgn=32799');
+//  treeId,   81749066
+//  viewportDivId,  trVp
+//  focusPid,  42446045903
+//  homePid,   42446045903
+//  changeFocus,  false
+//  selectHomUrl, ''
+//  pageStackArgs  pgn=32799
 $trees.ToolbarObject = function (treeId, viewportDivId, focusPid, homePid, changeFocus, selectHomUrl, pageStackArgs) {
     this.init(treeId, viewportDivId, focusPid, homePid, changeFocus, selectHomUrl, pageStackArgs)
 };
+
 $trees.ToolbarObject.prototype = {
     treeId: "",
     viewportDivEl: null,
@@ -670,6 +786,7 @@ $trees.ToolbarObject.prototype = {
     dragEndEvent: null,
     selectHomeUrl: "",
     pageStackArgs: "",
+    
     init: function (treeId, viewportDivId, focusPid, homePid, changeFocus, selectHomeUrl, pageStackArgs) {
         this.treeId = treeId;
         this.viewportDivEl = $("#viewportDivId");
@@ -677,11 +794,13 @@ $trees.ToolbarObject.prototype = {
         this.focusPid = focusPid;
         this.selectHomeUrl = selectHomeUrl;
         this.pageStackArgs = pageStackArgs;
+        
         $("#slider").on("pointertouchmousedown.tlbr", this, this.startDragThumb);
         $("#centerFocus").on("click.tlbr", this, this.resetView);
         $("#zoomIn").on("click.tlbr", this, this.zoomInCB);
         $("#zoomOut").on("click.tlbr", this, this.zoomOutCB);
         $("#print").on("click.tlbr", this, this.printCB);
+        
         this.dragEndEvent = new YAHOO.util.CustomEvent("toolbardragend");
         $trees.treeMap.zoomEvent.subscribe(this.handleZoomEvent, this, !0);
         $trees.treeMap.panEvent.subscribe(this.handlePanEvent, this, !0);
@@ -789,12 +908,15 @@ $trees.ToolbarObject.prototype = {
         $trees.treeMap.dragInProgress || this.dragInProgress || this.setFocusControl()
     }
 };
+
 $trees.toolbarCreate = function (treeId, viewportDivId, focusPid, homePid, changeFocus, selectHomUrl, pageStackArgs) {
     "undefined" == typeof $trees.toolbar && ($trees.toolbar = new $trees.ToolbarObject(treeId, viewportDivId, focusPid, homePid, changeFocus, selectHomUrl, pageStackArgs))
 };
+
 $trees.StateManagerObject = function (stateUrl) {
     this.init(stateUrl)
 };
+
 $trees.StateManagerObject.prototype = {
     stateUrl: "",
     delayBeforeRequest: 10,
@@ -849,9 +971,11 @@ $trees.StateManagerObject.prototype = {
         stateChanged && (myUrl = this.stateUrl + "&zoom=" + encodeURIComponent(zoomLevel) + "&top=" + encodeURIComponent(top) + "&left=" + encodeURIComponent(left) + "&vw=" + encodeURIComponent(vwidth) + "&vh=" + encodeURIComponent(vheight) + "&st=" + encodeURIComponent(scrollTop), $.post(myUrl))
     }
 };
+
 $trees.stateMgrCreate = function (stateUrl) {
     "undefined" == typeof $trees.statemgr && ($trees.statemgr = new $trees.StateManagerObject(stateUrl))
 };
+
 "use strict";
 
 function quickEdit(treeId, personId) {
@@ -884,12 +1008,34 @@ function removePersonModal() {
 function closeCallouts() {
     $(".calloutTrigger.active").callout("close")
 }
+
 var showHoverCard = !1,
     showAddPerson = !1,
     skipHideHover = !1;
+    
 $trees.HoverCardObject = function (treeId, hoverDivId, controlsDivId, focusPid, canEdit, focusUrl, profileUrl, pageStackArgs, searchUrl, hintUrl, addRelativeUrl, placesUrl, isUSSite, uploadPhotoUrl, editPhotoUrl, canContribute, canViewLiving, editPtUrlTemplate) {
     this.init(treeId, hoverDivId, controlsDivId, focusPid, canEdit, focusUrl, profileUrl, pageStackArgs, searchUrl, hintUrl, addRelativeUrl, placesUrl, isUSSite, uploadPhotoUrl, editPhotoUrl, canContribute, canViewLiving, editPtUrlTemplate)
 };
+
+// treeId,  '81749066'
+// hoverDivId, 'trHover'
+// controlsDivId, 'trVwHd'
+// focusPid, 42446045903
+// canEdit,  true
+// focusUrl,    'http://trees.ancestry.com/tree/81749066/family?cfpid=%7Bcfpid%7D' 
+// profileUrl,  'http://trees.ancestry.com/tree/81749066/person/%7Bpid%7D' 
+// pageStackArgs, 'pgn=32799'
+// searchUrl, 'http://search.ancestry.com/search/RecordSearch.aspx?tid=81749066&pid=%7Bpid%7D&//ssrc=pt'
+// hintUrl,   'http://trees.ancestry.com/tree/81749066/person/%7Bpid%7D/hints' 
+// addRelativeUrl,  'javascript:$TreesFunc.Family.showAddFamilyMemberModal("81749066", "{pid}", "&pgn=32799");'
+// placesUrl, ''
+// isUSSite,  true 
+// uploadPhotoUrl, 'http://trees.ancestry.com/tree/81749066/photo/upload?fpid=42446045903&pid=%7Bpid%7D'
+// editPhotoUrl,   'http://trees.ancestry.com/tree/81749066/media/%7Boidx%7D?fpid=42446045903&pid=%7Bpid%7D'
+// canContribute, true
+// canViewliving,  true
+// editPtUrlTemplate,  'http://trees.ancestry.com/pt/editperson.aspx?tid=81749066&pid=%7Bpid%7D'
+
 $trees.HoverCardObject.prototype = {
     treeId: "",
     hoverEl: null,
@@ -922,37 +1068,39 @@ $trees.HoverCardObject.prototype = {
     nodePosition: null,
     offscreenNodes: null,
     pubV2: !1,
+    
     init: function (treeId, hoverDivId, controlsDivId, focusPid, canEdit, focusUrl, profileUrl, pageStackArgs, searchUrl, hintUrl, addRelativeUrl, placesUrl, isUSSite, uploadPhotoUrl, editPhotoUrl, canContribute, canViewLiving, editPtUrlTemplate) {
-        this.treeId = treeId;
-        this.hoverEl = $("#" + hoverDivId);
-        this.hoverHeight = parseInt(this.hoverEl.css("height"));
-        this.hoverWidth = parseInt(this.hoverEl.css("width"));
-        this.controlsDivId = controlsDivId;
-        this.canEdit = canEdit;
-        this.focusUrl = decodeURI(focusUrl);
-        this.profileUrl = decodeURI(profileUrl);
-        this.pageStackArgs = decodeURI(pageStackArgs);
-        this.searchUrl = decodeURI(searchUrl);
-        this.hintUrl = decodeURI(hintUrl);
-        this.addRelativeUrl = decodeURI(addRelativeUrl);
-        this.placesUrl = decodeURI(placesUrl);
-        this.isUSSite = isUSSite;
-        this.focusPid = focusPid;
+        this.treeId = treeId; // 81749066
+        this.hoverEl = $("#" + hoverDivId); // Object[ div#trHover.card.hoverCard.hoverArea ]
+        this.hoverHeight = parseInt(this.hoverEl.css("height")); // 291
+        this.hoverWidth = parseInt(this.hoverEl.css("width"));   // 345
+        this.controlsDivId = controlsDivId; // trVwHd
+        this.canEdit = canEdit; // true
+        this.focusUrl = decodeURI(focusUrl); // "http://trees.ancestry.com/tree/81749066/family?cfpid={cfpid}"
+        this.profileUrl = decodeURI(profileUrl); // "http://trees.ancestry.com/tree/81749066/person/{pid}"
+        this.pageStackArgs = decodeURI(pageStackArgs); // "pgn=32799"
+        this.searchUrl = decodeURI(searchUrl); //http://search.ancestry.com/search/RecordSearch.aspx?tid=81749066&pid={pid}&ssrc=pt"
+        this.hintUrl = decodeURI(hintUrl); // "http://trees.ancestry.com/tree/81749066/person/{pid}/hints"
+        this.addRelativeUrl = decodeURI(addRelativeUrl); // 	"javascript:$TreesFunc.Family.showAddFamilyMemberModal("81749066", "{pid}", "&pgn=32799");"
+        this.placesUrl = decodeURI(placesUrl); // ""
+        this.isUSSite = isUSSite; // true
+        this.focusPid = focusPid; // 42446045903
         this.clearShowTimer();
         this.clearHideTimer();
-        this.uploadPhotoUrl = decodeURI(uploadPhotoUrl);
-        this.editPhotoUrl = decodeURI(editPhotoUrl);
-        this.canContribute = canContribute;
-        this.canViewLiving = canViewLiving;
-        this.editPtUrlTemplate = decodeURI(editPtUrlTemplate);
-        this.viewport = document.getElementById("trVp");
-        this.zoomLevel = $trees.treeMap.zoomLevel;
-        this.pubV2 = typeof ancestry != "undefined" && ancestry.pub ? !0 : !1;
+        this.uploadPhotoUrl = decodeURI(uploadPhotoUrl); // "http://trees.ancestry.com/tree/81749066/photo/upload?fpid=42446045903&pid={pid}"
+        this.editPhotoUrl = decodeURI(editPhotoUrl);     // "http://trees.ancestry.com/tree/81749066/media/{oidx}?fpid=42446045903&pid={pid}"
+        this.canContribute = canContribute; // true
+        this.canViewLiving = canViewLiving; // true
+        this.editPtUrlTemplate = decodeURI(editPtUrlTemplate); // "http://trees.ancestry.com/pt/editperson.aspx?tid=81749066&pid={pid}"
+        this.viewport = document.getElementById("trVp"); // div#trVp.trVp.openhand
+        this.zoomLevel = $trees.treeMap.zoomLevel; // 0.4
+        this.pubV2 = typeof ancestry != "undefined" && ancestry.pub ? !0 : !1; // true
         this.pubV2 && ancestry.pub.setCurrentPage("TreeViewer", {
             TreeId: this.treeId,
             FocusPersonId: this.focusPid || null
         })
     },
+    
     setUpHoverCard: function () {
         window.treesScreenType("smart-phone") ? this.hoverEl.addClass("hoverCardNotDesktop hoverCardActive").removeClass("hoverCardNotDesktop hoverCardActive hoverCardQuadrant1 hoverCardQuadrant2 hoverCardQuadrant3 hoverCardQuadrant4").css({
             "-webkit-transform": "scale(" + this.scaleX + ", " + this.scaleY + ") translate(0px, 0px)",
@@ -965,12 +1113,14 @@ $trees.HoverCardObject.prototype = {
         }).find(".userCardSize1").removeClass("userCardSize1").addClass("userCardSize4");
         skipHideHover === !0 && (this.hoverEl.addClass("noTransition"), $(".nodeActive").removeClass("nodeActive nodeActiveNotInView hoverArea hoverCardQuadrant1 hoverCardQuadrant2 hoverCardQuadrant3 hoverCardQuadrant4").find(".node-bdy").addClass("noTransition"), skipHideHover = !1)
     },
+    
     showHover: function () {
         var $personLookupField = $("#personLookupField"),
             nodes, $node, isPedigreeView, $fsIcon, $hoverName, hintUrl, $hoverBirthDate, $hoverBirthPlace, hoverBPlaceHtml, $hoverDeathDate, $hoverLivingTag, tagText, $hoverDeathPlace, hoverDPlaceHtml, tidVal, $hoverSearchLink, $hoverChangeFocusLink, changeFocusText, $hoverAddRelativeLink, rUrl;
+            // $personLookupField = m.fn.init {context: document, selector: "#personLookupField"}
         $(".calloutTrigger").hasClass("active") && $(".calloutTrigger.active").callout("close");
-        $personLookupField.hasClass("autocompleteAttached") && $personLookupField.autocomplete("close").blur();
-        nodes = $(".trGraph .node");
+        $personLookupField.hasClass("autocompleteAttached") && $personLookupField.autocomplete("close").blur(); //$personLookupField = m.fn.init {context: document, selector: "#personLookupField"}
+        nodes = $(".trGraph .node"); // nodes = m.fn.init[30] total 30 elements(people) at the screen
         this.offscreenNodes = $.map(nodes, function (val) {
             var pos = $trees.hovercard.getNodePosition(val);
             if (pos.offScreen) return val = $(val), val.addClass("nodeHidden"), val
@@ -978,7 +1128,7 @@ $trees.HoverCardObject.prototype = {
         try {
             if (this.nodeEl == null || $trees.treeMap.dragInProgress == !0) return;
             this.nodePosition = this.getNodePosition(this.nodeEl);
-            $node = $(this.nodeEl).one("mouseout", this.handleNodeMouseOut);
+            $node = $(this.nodeEl).one("mouseout", this.handleNodeMouseOut); // $node = [div#42493079751:3.node.female.nodeFamily, context: div#42493079751:3.node.female.nodeFamily]
             window.treesScreenType("smart-phone") ? this.hoverEl.removeClass("hoverCardClose").addClass(this.nodePosition.quadrantClass).css({
                 "border-radius": 6 * this.zoomLevel,
                 bottom: this.nodePosition.hovercard.bottom,
@@ -1005,6 +1155,7 @@ $trees.HoverCardObject.prototype = {
                 oidVal = this.nodeEl.getAttribute("T:Oid"),
                 pid = pidVal ? parseInt(pidVal, 10) : 0,
                 nodeId = nodeIdVal ? nodeIdVal : "";
+                // this.nodeEl, the choice node, ex: div#42493079751:3.node.female.nodeFamily
             if (pid == 0 || nodeId == "") return;
             var nameVal = this.nodeEl.getAttribute("T:Name"),
                 fbIdVal = this.nodeEl.getAttribute("T:FbId"),
@@ -1116,8 +1267,9 @@ $trees.HoverCardObject.prototype = {
                 "-webkit-transform": "scale(1) translate(" + -parseInt(this.nodePosition.offset.left) + "px, " + -parseInt(this.nodePosition.offset.top) + "px)",
                 "-ms-transform": "scale(1) translate(" + -parseInt(this.nodePosition.offset.left) + "px, " + -parseInt(this.nodePosition.offset.top) + "px)",
                 transform: "scale(1) translate(" + -parseInt(this.nodePosition.offset.left) + "px, " + -parseInt(this.nodePosition.offset.top) + "px)"
-            });
-            $("body").addClass("treeViewerAwesomeHoverCardActive").on("mouseout.hoverArea", ".hoverArea", this, this.handleHoverMouseOut).on("mouseover.hoverArea", ".hoverArea", this, this.handleHoverMouseOver);
+            }); // show the hovarCard window
+            $("body").addClass("treeViewerAwesomeHoverCardActive").on("mouseout.hoverArea", ".hoverArea", this, this.handleHoverMouseOut).on(
+                "mouseover.hoverArea", ".hoverArea", this, this.handleHoverMouseOver);
             $("#hoverCardToolsButton").callout({
                 type: "click",
                 classes: "calloutMenu calloutHoverCard",
@@ -1137,6 +1289,7 @@ $trees.HoverCardObject.prototype = {
             })
         } catch (e) {}
     },
+    
     hideHover: function () {
         $("#hoverCardToolsButton").callout("close");
         $("#trGraph").removeClass("trGraphFaded").find(".nodeActive").removeClass("noTransition nodeActive nodeActiveNotInView hoverArea hoverCardQuadrant1 hoverCardQuadrant2 hoverCardQuadrant3 hoverCardQuadrant4");
@@ -1163,39 +1316,52 @@ $trees.HoverCardObject.prototype = {
             $("body").removeClass("treeViewerAwesomeHoverCardActive").off("mouseout.hoverArea").off("mouseover.hoverArea")
         } catch (e) {}
     },
+    
     setShowTimer: function () {
         this.clearShowTimer();
         this.showTimeoutId = setTimeout(function () {
             $trees.hovercard.showHover()
         }, 0)
     },
+    
     clearShowTimer: function () {
         this.showTimeoutId != -1 && (clearTimeout(this.showTimeoutId), this.showTimeoutId = -1)
     },
+    
     setHideTimer: function () {
         this.clearHideTimer();
         this.hideTimeoutId = setTimeout(function () {
             $trees.hovercard.hideHover()
         }, 25)
     },
+    
     clearHideTimer: function () {
         this.hideTimeoutId != -1 && (clearTimeout(this.hideTimeoutId), this.hideTimeoutId = -1)
     },
+    
     handleNodeMouseOver: function (nodeEl) {
-        (this.nodeEl = nodeEl, this.zoomLevel = $trees.treeMap.zoomLevel, this.nodeHeight = nodeEl.offsetHeight * this.zoomLevel, this.nodeWidth = nodeEl.offsetWidth * this.zoomLevel, $("body").hasClass("draggingTreeView")) || (this.setUpHoverCard(), this.setShowTimer())
+        (this.nodeEl = nodeEl, 
+        this.zoomLevel = $trees.treeMap.zoomLevel, 
+        this.nodeHeight = nodeEl.offsetHeight * this.zoomLevel, 
+        this.nodeWidth = nodeEl.offsetWidth * this.zoomLevel, $("body").hasClass("draggingTreeView")) || (this.setUpHoverCard(), 
+        this.setShowTimer())
     },
+    
     handleNodeMouseOut: function (nodeEl) {
         nodeEl.target || (this.nodeEl = nodeEl.parentNode, this.clearShowTimer())
     },
+    
     handleHoverMouseOut: function (e) {
         var hovercard = e && e.data ? e.data : this;
         $("body").is(":hover") && hovercard.setHideTimer()
     },
+    
     handleHoverMouseOver: function (e) {
         var hovercard = e && e.data ? e.data : this;
         hovercard.clearShowTimer();
         hovercard.clearHideTimer()
     },
+    
     showTreeViewerLivingModal: function () {
         var tidVal = this.getTid(),
             pidVal = this.nodeEl.getAttribute("T:Pid"),
@@ -1203,9 +1369,11 @@ $trees.HoverCardObject.prototype = {
         $genTreesModal.init("LivingModal", 400, "");
         $genTreesModal.create("LivingModal", livingModalUrl, null)
     },
+    
     getTid: function () {
         return this.treeId
     },
+    
     getNodePosition: function (node) {
         var result = {},
             buffer;
@@ -1290,16 +1458,40 @@ $trees.HoverCardObject.prototype = {
         return result
     }
 };
+
+//$trees.hoverCardCreate('81749066', 'trHover', 'trVwHd', 42446045903, true, 'http://trees.ancestry.com/tree/81749066/family?cfpid=%7Bcfpid%7D', 'http://trees.ancestry.com/tree/81749066/person/%7Bpid%7D', 'pgn=32799', 'http://search.ancestry.com/search/RecordSearch.aspx?tid=81749066&pid=%7Bpid%7D&//ssrc=pt', 'http://trees.ancestry.com/tree/81749066/person/%7Bpid%7D/hints', 'javascript:$TreesFunc.Family.showAddFamilyMemberModal("81749066", "{pid}", "&pgn=32799");', '', true, 'http://trees.ancestry.com/tree/81749066/photo/upload?fpid=42446045903&pid=%7Bpid%7D', //'http://trees.ancestry.com/tree/81749066/media/%7Boidx%7D?fpid=42446045903&pid=%7Bpid%7D', true, true, 'http://trees.ancestry.com/pt/editperson.aspx?tid=81749066&pid=%7Bpid%7D');
+// treeId,  '81749066'
+// hoverDivId, 'trHover'
+// controlsDivId, 'trVwHd'
+// focusPid, 42446045903
+// canEdit,  true
+// focusUrl,    'http://trees.ancestry.com/tree/81749066/family?cfpid=%7Bcfpid%7D' 
+// profileUrl,  'http://trees.ancestry.com/tree/81749066/person/%7Bpid%7D' 
+// pageStackArgs, 'pgn=32799'
+// searchUrl, 'http://search.ancestry.com/search/RecordSearch.aspx?tid=81749066&pid=%7Bpid%7D&//ssrc=pt'
+// hintUrl,   'http://trees.ancestry.com/tree/81749066/person/%7Bpid%7D/hints' 
+// addRelativeUrl,  'javascript:$TreesFunc.Family.showAddFamilyMemberModal("81749066", "{pid}", "&pgn=32799");'
+// placesUrl, ''
+// isUSSite,  true 
+// uploadPhotoUrl, 'http://trees.ancestry.com/tree/81749066/photo/upload?fpid=42446045903&pid=%7Bpid%7D'
+// editPhotoUrl,   'http://trees.ancestry.com/tree/81749066/media/%7Boidx%7D?fpid=42446045903&pid=%7Bpid%7D'
+// canContribute, true
+// canViewliving,  true
+// editPtUrlTemplate,  'http://trees.ancestry.com/pt/editperson.aspx?tid=81749066&pid=%7Bpid%7D'
+
 $trees.hoverCardCreate = function (treeId, hoverDivId, controlsDivId, focusPid, canEdit, focusUrl, profileUrl, pageStackArgs, searchUrl, hintUrl, addRelativeUrl, placesUrl, isUSSite, uploadPhotoUrl, editPhotoUrl, canContribute, canViewliving, editPtUrlTemplate) {
     "undefined" == typeof $trees.hovercard && ($trees.hovercard = new $trees.HoverCardObject(treeId, hoverDivId, controlsDivId, focusPid, canEdit, focusUrl, profileUrl, pageStackArgs, searchUrl, hintUrl, addRelativeUrl, placesUrl, isUSSite, uploadPhotoUrl, editPhotoUrl, canContribute, canViewliving, editPtUrlTemplate))
 };
+
 $(function () {
     $(".pullToFullScreen").on("pointertouchmousedown", function () {
         $("body").hasClass("treeViewerAwesomeHoverCardActive") && $trees.hovercard.hideHover()
     });
+    
     $(".hoverCard").on("pointertouchmousedown", function (e) {
         e.stopPropagation()
     });
+    
     $(".hoverCardCloseButton").on("pointertouchmousedown", function (e) {
         e.stopPropagation();
         e.preventDefault()
@@ -1311,6 +1503,7 @@ $(function () {
         e.stopPropagation();
         e.preventDefault()
     });
+    
     $("#trGraph").on("pointertouchmousedown", ".node-bdy", function (e) {
         var $this, checkMove;
         e.preventDefault();
@@ -1324,17 +1517,22 @@ $(function () {
             ($("body").hasClass("treeViewerAwesomeHoverCardActive") || $("html").hasClass("modalOpen")) && ($("body").removeClass("moveGraphOrTriggerClick"), clearInterval(checkMove))
         }, 10)
     }).on("pointertouchmouseup", ".node-bdy", function () {
-        var $this = $(this);
+        var $this = $(this); // $this = [div.node-bdy, context: div.node-bdy]
         $this.data("data-mouseupoffset", $this.offset().top + $this.offset().left);
-        !$("body").hasClass("treeViewerAwesomeHoverCardActive") && $this.data("data-mouseupoffset") > $(this).data("data-mousedownoffset") - 25 && $this.data("data-mouseupoffset") < $(this).data("data-mousedownoffset") + 25 && (showHoverCard = showAddPerson = !0);
+        
+        !$("body").hasClass("treeViewerAwesomeHoverCardActive") && 
+            $this.data("data-mouseupoffset") > $(this).data("data-mousedownoffset") - 25 && $this.data("data-mouseupoffset") < $(this).data("data-mousedownoffset") + 25 && (showHoverCard = showAddPerson = !0);
+        
         $this.parent(".node").hasClass("add") ? showAddPerson === !1 ? ($this.data("data-onclick", $this.attr("onclick")), $this.attr("onclick", null), setTimeout(function () {
             $this.attr("onclick", $this.data("data-onclick"))
         }, 300)) : ($("body").hasClass("treeViewerAwesomeHoverCardActive") && $trees.hovercard.hideHover(), $this.trigger("click")) : $("body").hasClass("treeViewerAwesomeHoverCardActive") || showHoverCard !== !0 ? $("body").hasClass("treeViewerAwesomeHoverCardActive") && (skipHideHover = !0, $trees.hovercard.handleNodeMouseOver(this.parentNode)) : ($("body").removeClass("draggingTreeView"), $trees.hovercard.handleNodeMouseOver(this.parentNode), showHoverCard = !1)
     })
 });
+
 $trees.BreadcrumbObject = function (breadcrumbInfo, colorPref) {
     this.init(breadcrumbInfo, colorPref)
 };
+
 $trees.BreadcrumbObject.prototype = {
     breadcrumbList: null,
     overflowEl: null,
@@ -1405,12 +1603,15 @@ $trees.BreadcrumbObject.prototype = {
     showOverflow: function () {},
     hideOverflow: function () {}
 };
+
 $trees.breadcrumbCreate = function (breadcrumbInfo, colorPref) {
     "undefined" == typeof $trees.breadcrumb && ($trees.breadcrumb = new $trees.BreadcrumbObject(breadcrumbInfo, colorPref))
 };
+
 $trees.EventFilter = function (eventObj, eventHandlerName, eventCheckName) {
     this.init(eventObj, eventHandlerName, eventCheckName)
 };
+
 $trees.EventFilterCount = $trees.EventFilter.prototype = {
     currentEvent: null,
     nextEvent: null,
@@ -1440,9 +1641,14 @@ $trees.EventFilterCount = $trees.EventFilter.prototype = {
         return thisObj.eventCheckName && (ret = thisObj.eventObj[thisObj.eventCheckName](e), ret == !1) ? !1 : (thisObj.nextEvent = e, thisObj.currentEvent == null ? thisObj.doEvent() : (++thisObj.suspendedCount, e.preventDefault ? e.preventDefault() : e.returnValue = !1, !1))
     }
 };
+
+// $trees.logCreate('trees.ancestry.com/tree/error/LogJavaScriptError', '3');
+// logUrl: 'trees.ancestry.com/tree/error/LogJavaScriptError'
+// logLevelToRecord: 3
 $trees.LogObject = function (logUrl, logLevelToRecord) {
     this.init(logUrl, logLevelToRecord)
 };
+
 $trees.LogObject.prototype = {
     init: function (logUrl, logLevelToRecord) {
         this.LevelDebug = 5;
@@ -1469,6 +1675,7 @@ $trees.LogObject.prototype = {
     fatal: function (feature, message, err) {
         this.log(feature, message, this.LevelFatal, err)
     },
+    
     log: function (feature, message, logLevel, err) {
         var data;
         if (logLevel <= this.logLevelToRecord) {
@@ -1491,18 +1698,23 @@ $trees.LogObject.prototype = {
             case this.LevelFatal:
                 err || console.error(logMessage)
             }
+            
             data = encodeURI("level=" + this.getLevelName(logLevel) + "&feature=" + feature + (err.status ? "&status=" + err.status : "") + (err.status ? "&statusText=" + err.statusText : "") + (err.responseText ? "&responseText=" + err.responseText : "") + (err.responseXml ? "&responseXml=" + err.responseXml : "") + (err.argument ? "&argument=" + err.argument : "") + (err.getAllResponseHeaders ? "&allResponseHeaders=" + err.getAllResponseHeaders : "") + (err.message ? "&errorMessage=" + err.message : "") + "&message=" + logMessage + "&url=" + window.location.href + "&file=" + file + "&line=" + lineNumber);
+            
             YAHOO.util.Connect.asyncRequest("POST", this.logUrl, null, data)
         }
     },
+    
     getLevelName: function (logLevel) {
         var levelName = "";
         return logLevel > 0 && logLevel < this.LevelNames.length && (levelName = this.LevelNames[logLevel]), levelName
     }
 };
+
 $trees.logCreate = function (logUrl, logLevelToRecord) {
     "undefined" == typeof $trees.log && ($trees.log = new $trees.LogObject(logUrl, logLevelToRecord))
 };
+
 typeof console == "undefined" && (console = {
     log: function () {},
     debug: function () {},
@@ -1510,9 +1722,11 @@ typeof console == "undefined" && (console = {
     warn: function () {},
     error: function () {}
 });
+
 $trees.HintsObject = function () {
     this.init()
 };
+
 $trees.HintsObject.prototype = {
     pidList: null,
     nodeIdList: null,
@@ -1643,6 +1857,7 @@ $trees.HintsObject.prototype = {
         $trees.initFirstHintBing(nodeIdArray[0], nodeIdArray[1])
     }
 };
+
 $trees.hintsCreate = function (hasViewedBing, bingUserFlag, firstHintNodeId, firstHintPersonId) {
     if ("undefined" == typeof $trees.hints && ($trees.hints = new $trees.HintsObject), $trees.hints.hasViewedBing = hasViewedBing, $trees.hints.bingUserFlag = bingUserFlag, !hasViewedBing && firstHintNodeId.length > 0) {
         $trees.hints.hasViewedBing = !0;
@@ -1650,6 +1865,7 @@ $trees.hintsCreate = function (hasViewedBing, bingUserFlag, firstHintNodeId, fir
         $trees.hints.showHintBing("", "", nodeIdArray)
     }
 };
+
 $trees.initFirstFTMSyncBing = function () {
     var docHeight = YAHOO.util.Dom.getViewportHeight(),
         docWidth = YAHOO.util.Dom.getViewportWidth(),
@@ -1668,17 +1884,21 @@ $trees.initFirstFTMSyncBing = function () {
     s_pageName = s.pageName;
     s.t()
 };
+
 $trees.hideFirstFTMSyncBing = function () {
     document.getElementById("ftmsCtr").style.display = "none";
     document.getElementById("ftmsModalBkg").style.display = "none";
     $trees.hints.initiateHintRequest()
 };
+
 $trees.ftmsCreate = function (hasViewedBing, viewBing) {
     typeof viewBing != "undefined" && typeof hasViewedBing != "undefined" && (viewBing === !0 && hasViewedBing === !1 ? $trees.initFirstFTMSyncBing() : $trees.hints.initiateHintRequest())
 };
+
 $trees.ThumbnailNavigator = function () {
     this.init()
 };
+
 $trees.ThumbnailNavigator.prototype = {
     paddingX: 0,
     paddingY: 0,
@@ -1884,9 +2104,11 @@ $trees.ThumbnailNavigator.prototype = {
         thumbnav.isMouseDownInViewport(e) ? thumbnav.startDragViewportRect(e) : thumbnav.repositionViewportRect(e)
     }
 };
+
 $trees.thumbnailNavigatorCreate = function () {
     "undefined" == typeof $trees.thumbNav && ($trees.thumbNav = new $trees.ThumbnailNavigator)
 };
+
 /*! Copyright (c) 2011 Brandon Aaron (http://brandonaaron.net)
  * Licensed under the MIT License (LICENSE.txt).
  *
@@ -1932,6 +2154,7 @@ $trees.thumbnailNavigatorCreate = function () {
         }
     })
 })(jQuery);
+
 (function (b, a, c) {
     b.fn.jScrollPane = function (e) {
         function d(D, O) {
@@ -7674,3 +7897,28 @@ function nameMatch(name, nameList) {
     return !1
 }
 var monthNamesAll, monthAbbrs, aboutAbbr, beforeAbbr, afterAbbr, betweenAbbr, conjunctionAbbr, rangeAbbr, unknown, monthDayYearOrder, warnDateYearTooBig, warnDateTwoMonths, warnDateDayWithoutMonth, warnDateTwoDays, warnDateTwoYears, warnDateDayTooLarge, warnDateMonthTooLarge, warnDateInvalidMonth, warnDateBirthBeforeMother, warnDateBirthAfterMother, warnDateBirthBeforeFather, warnDateBirthAfterFather, warnDateBirth120BeforeDeath, warnDateDeath120AfterBirth, warnDateBeforeBirth, warnDateAfterDeath, warnDateMayBeWrong, warnStillUseIt, warnOfTheSpouse, badBirthDate, badDeathDate, badMarriageDate, warnLastName, warnNameFather, warnNameMaiden, invalidNameChars, errorNameInvalidChar, $val = {}
+
+// <script type="text/javascript" src="http://c.mfcreative.com/lib/tgn/combo.ashx?
+// x/tre_atw/4.2.2874.2874/cdn/trees-wrapper.js
+// x/tre_atw/4.2.2874.2874/cdn/trees-callout.js
+// x/tre_atw/4.2.2874.2874/cdn/treemap/awesome-treemap.js
+// x/tre_atw/4.2.2874.2874/cdn/treemap/awesome-toolbar.js
+// x/tre_atw/4.2.2874.2874/cdn/treemap/statemgr.js
+// x/tre_atw/4.2.2874.2874/cdn/treemap/awesome-hovercard.js
+// x/tre_atw/4.2.2874.2874/cdn/treemap/awesome-breadcrumb.js
+// x/tre_atw/4.2.2874.2874/cdn/treemap/eventfilter.js
+// x/tre_atw/4.2.2874.2874/cdn/treemap/log.js
+// x/tre_atw/4.2.2874.2874/cdn/treemap/hints.js
+// x/tre_atw/4.2.2874.2874/cdn/treemap/ftms.js
+// x/tre_atw/4.2.2874.2874/cdn/treemap/awesome-thumbnailnavigator.js
+// x/tre_atw/4.2.2874.2874/cdn/plugin/jquery.mousewheel.js
+// x/tre_atw/4.2.2874.2874/cdn/plugin/jquery.jscrollpane.min.js
+// 0/lib/jquery/jquery.tmpl.min.js
+// x/tre_atw/4.2.2874.2874/cdn/treemap/pointertouchmouse.js
+// 9/js/mbox.js
+// 0/lib/yui.2.7.0/build/container/container-min.js
+// 0/lib/yui.2.7.0/build/datasource/datasource-min.js
+// x/lib/yui.2.7.0/build/json/json-min.js
+// 8/js/utility.js
+// x/tre_atw/4.2.2874.2874/cdn/validation.js
+// "></script>

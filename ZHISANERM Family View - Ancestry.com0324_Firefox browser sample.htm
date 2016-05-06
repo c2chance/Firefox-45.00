@@ -4,18 +4,39 @@
     </head>
     
     <body>
-        <div class="pullToFullScreen">
-            <div class="flexContainer">
+        <!---->
+        <div class="pullToFullScreen"> <!-- 浏览器全部显示 window css's display is block-->
+            <!---->
+            <div class="flexContainer"> <!-- 等同于 pullToFullScreen, width/height equal, display:flex-->
+                <!-- 广告条 -->
                 <div id="BannerRegion"></div>
+                <!--Menu bar, Trees/Search/DNA/HELP/EXTRAS -->
+                <div id = "HeaderRegion"
+                <!--家族树之叶头两个下拉 button, "ZHISANERM FAMILY TREE" & "FIND PERSON" -->
                 <header class = "pageHeader bgDark bgColor1 TreeHeaderFooter"></header>
+                <!--抛去 Menu之后的区域部分 position: relative-->
                 <div class="page pagePadded TabNav">
+                    <!--与上面包含区域相同 W/H, postion 差异, Position: absolute-->
                     <div class="trVwCon treeViewerAwesome">
+                        <!---->
                         <div id="trVw" class="tvFamily" onmousedown="javascript:$trees.deselect();">
+                            <!---->
                             <div id = "trVp" class="trVp openhand" style="-moz-user-select:none">
-                                <div id="trGraph" class="trGraph"></div>
+                                <!-- 家族人物及连接线段-->
+                                <div id="trGraph" class="trGraph">
+                                    <!-- 所有家族人物以及连接线段都在 trGraph 中, 包括水平线/竖线, 每个人物组成等-->
+                                </div>
+                                <!---->
                                 <div class="trVwHoverArea hoverArea"></div>
-                                <div id="trVwHd"></div>
+                                <!-- 集合 Paditree/Family Controls-bar ZoomIn/ZoomOut -->
+                                <div id="trVwHd">
+                                    <div class = "subNavCon navgateButtons"></div>
+                                    <nav id = "cntrls" class = "cntrls" style = ""></nav> 
+                                </div>
+                                
+                                <!-- 卡片式显示个人信息浮动框 -->
                                 <div id="trHover" class="card hoverCard hoverArea"></div>
+                                <!-- 缩略图框 -->
                                 <div id="thumNav" class="thumbNav" style="font-size: 4.64px"></div>
                             </div>
                         </div>

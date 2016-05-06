@@ -1,0 +1,15 @@
+(function(){
+(function() {
+    var mid = document.createElement('script'); mid.type = 'text/javascript'; mid.async = true;
+    mid.src = '//mathid.mathtag.com/d/i.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mid, s);
+})();
+
+(window.MathIDInits = window.MathIDInits || []).push(function() {
+    MathID.getData({mt_id:'483404',ccid:'',cuid:'',mm_uuid:'ef66572b-1e42-4900-bd35-60ede5e6151d',src:'mt2'}).then(function(data) {
+        var p = document.createElement('script');
+        p.src = '//pixel.mathtag.com/event/js?mt_id=483404&mt_adid=110193&mt_nsync=1&no_attr=1&cs_jsonp=utag.ut.getMediaMathID&mm_bnc&mm_bct&mathid_data=' + encodeURIComponent(data);
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p, s);
+    });
+});
+})();

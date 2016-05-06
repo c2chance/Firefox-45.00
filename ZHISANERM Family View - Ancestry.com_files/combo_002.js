@@ -259,6 +259,7 @@
         AjaxManager.bindAjaxForms()
     })
 })(jQuery);
+
 var ResourceManager = function () {
     function _parseResourceUrl(uri, pageResources, combinatorUrlRegex) {
         var parts, k;
@@ -444,6 +445,7 @@ var ResourceManager = function () {
         };
     return _public
 }();
+
 (function ($) {
     "use strict";
     var shared = {
@@ -722,6 +724,7 @@ var ResourceManager = function () {
         $('.alert:not([data-auto-instantiate="off"])').alert()
     })
 })(jQuery);
+
 (function ($) {
     "use strict";
     var shared = {
@@ -1158,6 +1161,7 @@ var ResourceManager = function () {
         version: version
     }
 })(jQuery);
+
 (function ($) {
     "use strict";
     var defaults = {
@@ -1666,7 +1670,9 @@ var ResourceManager = function () {
         $('[data-callout]:not([data-auto-instantiate="off"])').callout()
     })
 })(jQuery);
+
 if (typeof AcomModal == "undefined") var AcomModal = !1;
+
 jQuery(document).ready(function ($) {
     "use strict";
     var version = 2.1,
@@ -1836,6 +1842,7 @@ jQuery(document).ready(function ($) {
         initialExtCloseList: tempExtCloseList
     }))
 });
+
 (function ($) {
     "use strict";
     var Modal, version = 3,
@@ -2068,6 +2075,7 @@ jQuery(document).ready(function ($) {
     };
     $.modal.version = version
 })(jQuery);
+
 (function ($) {
     "use strict";
     var shared = {
@@ -2377,6 +2385,7 @@ jQuery(document).ready(function ($) {
         window.location.hash && $('.tab[data-label="' + window.location.hash.replace("#", "") + '"], .tab[href="' + window.location.hash + '"]').trigger("click.tabs")
     })
 })(jQuery);
+
 typeof ancestry == "undefined" && (ancestry = {});
 ancestry.pubDevLevel = "live";
 ancestry.pubDomainInfo = {
@@ -2436,6 +2445,7 @@ ancestry.pubDomainInfo = {
         }
     }
 };
+
 ancestry.pubVersion = 90;
 ancestry.pubUrlInfos = {
         TreeRepositoryAdd: {
@@ -15322,6 +15332,9 @@ ancestry.pubUrlInfos = {
             }
         }, {}]
     }, {}, [17]);
+
+
+
 $(document).ready(function () {
     $(".responsiveTabLink").click(function (event) {
         $("#TabGroupLargeDiv").toggleClass("togglePages");
@@ -15337,6 +15350,7 @@ $(document).ready(function () {
         return $("#SubNavTabGroup").toggleClass("togglePagesSN"), event.stopPropagation(), $(this).hasClass("selected") ? !1 : void 0
     })
 });
+
 (function ($) {
     "use strict";
 
@@ -15634,6 +15648,7 @@ $(document).ready(function () {
         $("#formAlert").length || $('<div id="formAlert"><\/div>').appendTo("body")
     })
 })(jQuery);
+
 if (typeof YAHOO == "undefined" || !YAHOO) var YAHOO = {};
 YAHOO.namespace = function () {
     for (var A = arguments, E = null, B, D, C = 0; C < A.length; C = C + 1)
@@ -20439,6 +20454,7 @@ YAHOO.util.Connect = {
             return C
         }
     },
+    
     asyncRequest: function (F, C, E, A) {
         var D = this._isFileUpload ? this.getConnectionObject(!0) : this.getConnectionObject(),
             B = E && E.argument ? E.argument : null;
@@ -20451,6 +20467,7 @@ YAHOO.util.Connect = {
         }
         return null
     },
+    
     initCustomEvents: function (A, C) {
         for (var B in C.customevents) this._customEvents[B][0] && (A[this._customEvents[B][0]] = new YAHOO.util.CustomEvent(this._customEvents[B][1], C.scope ? C.scope : null), A[this._customEvents[B][0]].subscribe(C.customevents[B]))
     },
@@ -22760,3 +22777,24 @@ var AddPerson = function ($) {
         })), deferred
     }, _addPerson
 }(jQuery)
+
+//<script type="text/javascript" src="http://c.mfcreative.com/lib/tgn/combo.ashx?
+// x/lib/tgn/util/v1.2/ajaxmanager.js
+// x/lib/tgn/util/v1.1/resourcemanager.js
+// 2/js/v2/alert.js
+// x/js/v2/autocomplete.js
+// 7/js/v1/callout.js
+// 2/js/v2/modals.js
+// 6/js/v3/modal.js
+// 4/js/v2/tab.js
+// x/aps_pub/pub.js
+// x/tre_atw/4.2.2874.2874/cdn/treestabs-responsive.js
+// 5/js/v1/form.js
+// 0/lib/yui.2.7.0/build/yuiloader-dom-event/yuiloader-dom-event.js
+// 0/lib/yui.2.7.0/build/utilities/utilities.js
+// 8/lib/tgn/ancestry/ancestry.js
+// x/tre_atw/4.2.2874.2874/cdn/trees.js
+// x/tre_atw/4.2.2874.2874/cdn/treeutils.js
+// x/tre_atw/4.2.2874.2874/cdn/plugin/jquery.ancplaceholder.js
+// x/tre_atw/4.2.2874.2874/cdn/addperson.js
+// "></script>
