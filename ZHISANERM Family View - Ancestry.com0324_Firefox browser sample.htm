@@ -2,7 +2,7 @@
     <head>
         <title>Family View - Ancestry.com</title>
     </head>
-    
+
     <body>
         <!---->
         <div class="pullToFullScreen"> <!-- 浏览器全部显示 window css's display is block-->
@@ -18,22 +18,43 @@
                 <div class="page pagePadded TabNav">
                     <!--与上面包含区域相同 W/H, postion 差异, Position: absolute-->
                     <div class="trVwCon treeViewerAwesome">
-                        <!---->
+                        <!--deselect() 禁止拖放对象选择-->
                         <div id="trVw" class="tvFamily" onmousedown="javascript:$trees.deselect();">
                             <!---->
                             <div id = "trVp" class="trVp openhand" style="-moz-user-select:none">
                                 <!-- 家族人物及连接线段-->
                                 <div id="trGraph" class="trGraph">
                                     <!-- 所有家族人物以及连接线段都在 trGraph 中, 包括水平线/竖线, 每个人物组成等-->
+                                    <div class="line horizontal marriage-male" style=""></div>
+                                    <div class="line horizontal marriage-female" style=""></div>
+                                    <div class="line vertical" style=""></div>
+                                    <div class="line horizontal" style=""></div>
+                                    <div class="marrie-connect" style=""></div>
+
+                                    <div class="node male focus nodeFamily" style=""></div>
+
+                                    <div class="node male   nodeFamily" id="xxxxxx:2" style=""></div>
+                                    <div class="node female nodeFamily" style=""></div>
+                                    <div class="node male   silhouette nodeFamily" style=""></div>
+                                    <div class="node female silhouette nodeFamily" style=""></div>
+                                    <div class="node female silhouette hint nodeFamily" style=""></div>
+                                    <!-- add 还没定义的 -->
+                                    <div class="node male   silhouette add nodeFamily" style=""></div>
+                                    <div class="node female silhouette add nodeFamily" style=""></div>
+
+                                    <div class="node male hint nodeFamily" style=""></div>
+
+                                    <div class="node male fullExt nodeFamily" style=""></div>
+
                                 </div>
                                 <!---->
                                 <div class="trVwHoverArea hoverArea"></div>
                                 <!-- 集合 Paditree/Family Controls-bar ZoomIn/ZoomOut -->
                                 <div id="trVwHd">
                                     <div class = "subNavCon navgateButtons"></div>
-                                    <nav id = "cntrls" class = "cntrls" style = ""></nav> 
+                                    <nav id = "cntrls" class = "cntrls" style = ""></nav>
                                 </div>
-                                
+
                                 <!-- 卡片式显示个人信息浮动框 -->
                                 <div id="trHover" class="card hoverCard hoverArea"></div>
                                 <!-- 缩略图框 -->
@@ -47,7 +68,7 @@
     </body>
 </html>
 
-            
-                
-                                
-                
+
+"id": "42446045903:0"
+"personid": "42446045903" // or pid
+"name": "Sanerm Zhi Atty."
