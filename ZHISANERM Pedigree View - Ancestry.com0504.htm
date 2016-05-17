@@ -1677,6 +1677,12 @@
 
             <script type='text/javascript'>
                 (function () {
+                    // e: 100
+                    // h: "r"
+                    // f: 	"QSI_S_ZN_aWTeGdcZfT4VBn7"
+                    // g: "http://ancestry.siteintercept.qualtrics.com/WRSiteInterceptEngine/?Q_ZID=ZN_aWTeGdcZfT4VBn7&Q_LOC=
+                    //          file%3A%2F%2F%2FE%3A%2FChancesWiki%2FDropbox%2Fworkspaces%2FNodejsWeb%2FFirefox-45.00%2FZHISANERM%2520Pedigree%2520View%2520-%2520Ancestry.com0504.htm"
+                    //     is  file:///E:/ChancesWiki/Dropbox/workspaces/NodejsWeb/Firefox-45.00/ZHISANERM%20Pedigree%20View%20-%20Ancestry.com0504.htm
                     var g = function (e, h, f, g) {
                         this.get = function (a) {
                             for (var a = a + "=", c = document.cookie.split(";"), b = 0, e = c.length; b < e; b++) {
@@ -1727,7 +1733,8 @@
                     };
 
                     try {
-                        (new g(100, "r", "QSI_S_ZN_aWTeGdcZfT4VBn7", "http://ancestry.siteintercept.qualtrics.com/WRSiteInterceptEngine/?Q_ZID=ZN_aWTeGdcZfT4VBn7&Q_LOC=" + encodeURIComponent(window.location.href))).start()
+                        (new g(100, "r", "QSI_S_ZN_aWTeGdcZfT4VBn7",
+                            "http://ancestry.siteintercept.qualtrics.com/WRSiteInterceptEngine/?Q_ZID=ZN_aWTeGdcZfT4VBn7&Q_LOC=" + encodeURIComponent(window.location.href))).start()
                     } catch (i) { }
                 })();
             </script>
@@ -2042,8 +2049,10 @@
             var v_spShowTreeName = 'True';
             var v_spCanSwitchTree = 'True';
             var v_cache = 'http://c.mfcreative.com/';
-            var v_yahooapis = 'http://c.mfcreative.com/lib/yui.2.7.0';
-            var v_yahooapis_combo = 'http://yui.yahooapis.com/combo?';
+//            var v_yahooapis = 'http://c.mfcreative.com/lib/yui.2.7.0';
+            var v_yahooapis = './lib/yui.2.7.0';
+//            var v_yahooapis_combo = 'http://yui.yahooapis.com/combo?';
+            var v_yahooapis_combo = './lib/yui.';
             var v_yahooapis_combo_ver = '2.8.0';
             var v_spJsLoaded = false;
             var v_NPP = true;
@@ -2055,7 +2064,8 @@
             TGN.namespace('Ancestry.Trees.selectPerson');
             TGN.Ancestry.Trees.selectPerson.saveRecordToTree = function (attachToPerson) {
                 if (!v_spJsLoaded) {
-                    $.getScript('./tre_atw/4.2.2874.2874/cdn/selectpersonondemand_responsive.js', function () {
+                    //$.getScript('http://c.mfcreative.com/tre_atw/4.2.2874.2874/cdn/selectpersonondemand_responsive.js', function () {
+                    $.getScript('./lib/x/tre_atw/4.2.2874.2874/cdn/selectpersonondemand_responsive.js', function () {
                         v_spJsLoaded = true;
                         TGN.Ancestry.Trees.selectPerson.modalInit(attachToPerson);
                     });
@@ -2091,7 +2101,8 @@
                     $trees.ftmsCreate(false, false);
                     $(function () {
                         if ('ontouchend' in document) {
-                            jQuery.getScript('./TRE_ATW/4.2.2874.2874/cdn/treemap/awesome-touch.js');
+                            //jQuery.getScript('http://c.mfcreative.com/TRE_ATW/4.2.2874.2874/cdn/treemap/awesome-touch.js');
+                            jQuery.getScript('./lib/x/TRE_ATW/4.2.2874.2874/cdn/treemap/awesome-touch.js');
                         }
                     });
 
