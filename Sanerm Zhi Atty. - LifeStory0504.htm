@@ -465,9 +465,7 @@
 
                             <div class="userCardContent">
                                 <h1 class="userCardTitle">Sanerm Zhi Atty.</h1>
-
                                 <p class="userCardSubTitle">1978&ndash;</p>
-
                                 <div class="userCardEvents">
                                     <p>
                                         <span class="userCardEvent">Birth</span> <span class="userCardEventDetail factBirth"><span class="birthDate">25/10/1978</span> <span class="detailsBullet">&bull;</span> <span class="birthPlace">Xiangfen, Shanxi, China</span></span>
@@ -514,10 +512,30 @@
 
                 <div class="tabsWrapper">
                     <nav class="tabs tabs480" data-allow-urls="true" data-tab="pages" id="personTabs" role="tablist">
-                        <a class="tab tabActive iconAfter iconArrowSmallDownAfter" onclick="personAnalyticsTrackClick('lifeStoryTab');personAnalyticsChangePageName('lifestory');logPersonPageContentView('lifestory', '81749066', '42446045903', 'False', 'Owner');" href="http://person.ancestry.com/tree/81749066/person/42446045903/story" id="tabStory">LifeStory</a>
-                        <a class="tab iconAfter iconArrowSmallDownAfter" onclick="personAnalyticsTrackClick('factsTab');personAnalyticsChangePageName('facts');logPersonPageContentView('facts', '81749066', '42446045903', 'False', 'Owner');" href="http://person.ancestry.com/tree/81749066/person/42446045903/facts" id="tabFacts">Facts</a>
-                        <a class="tab iconAfter iconArrowSmallDownAfter" onclick="setGalleryPubCurrentPage();personAnalyticsTrackClick('galleryTab');personAnalyticsChangePageName('gallery');logPersonPageContentView('gallery', '81749066', '42446045903', 'False', 'Owner');" href="http://person.ancestry.com/tree/81749066/person/42446045903/gallery" id="tabGallery">Gallery</a>
-                        <a class="tab iconAfter iconArrowSmallDownAfter" onclick="setHintsWithHistoryUrl();personAnalyticsTrackClick('hintsTab');personAnalyticsChangePageName('hints');logPersonPageContentView('hints', '81749066', '42446045903', 'False', 'Owner');" href="http://person.ancestry.com/tree/81749066/person/42446045903/hints" id="tabHints">Hints<span class="badge tabBadge hideBadge" id="tabHintCount"></span></a>
+                        <a class="tab tabActive iconAfter iconArrowSmallDownAfter" onclick="personAnalyticsTrackClick('lifeStoryTab');
+                            personAnalyticsChangePageName('lifestory');
+                            logPersonPageContentView('lifestory', '81749066', '42446045903', 'False', 'Owner');" 
+                           href="http://person.ancestry.com/tree/81749066/person/42446045903/story" id="tabStory">LifeStory
+                        </a>
+                        
+                        <a class="tab iconAfter iconArrowSmallDownAfter" onclick="personAnalyticsTrackClick('factsTab');
+                            personAnalyticsChangePageName('facts');
+                            logPersonPageContentView('facts', '81749066', '42446045903', 'False', 'Owner');" 
+                           href="http://person.ancestry.com/tree/81749066/person/42446045903/facts" id="tabFacts">Facts</a>
+                        
+                        <a class="tab iconAfter iconArrowSmallDownAfter" onclick="setGalleryPubCurrentPage();
+                            personAnalyticsTrackClick('galleryTab');
+                            personAnalyticsChangePageName('gallery');
+                            logPersonPageContentView('gallery', '81749066', '42446045903', 'False', 'Owner');" 
+                           href="http://person.ancestry.com/tree/81749066/person/42446045903/gallery" id="tabGallery">Gallery</a>
+                        
+                        <a class="tab iconAfter iconArrowSmallDownAfter" onclick="setHintsWithHistoryUrl();
+                            personAnalyticsTrackClick('hintsTab');
+                            personAnalyticsChangePageName('hints');
+                            logPersonPageContentView('hints', '81749066', '42446045903', 'False', 'Owner');" 
+                            href="http://person.ancestry.com/tree/81749066/person/42446045903/hints" id="tabHints">Hints
+                            <span class="badge tabBadge hideBadge" id="tabHintCount"></span>
+                        </a>
                         <h2 class="hideVisually">Navigation Research Tabs</h2>
                     </nav>
                 </div>
@@ -598,20 +616,13 @@
                     <ul class="treePagesList" id="treePagesList">
 
                         <li class=""><a class="icon iconTreePedigree" href="#" onclick="setTreeLink(this, 'TreeViewer');">View Tree</a></li>
-
                         <li class=""><a class="icon iconInfo" href="#" onclick="setTreeLink(this, 'TreeOverview');">Overview</a></li>
-
                         <li class=""><a class="icon iconGallery" href="#" onclick="setTreeLink(this, 'TreeMediaGallery');">Media Gallery</a></li>
-
                         <li class=""><a class="icon iconLeaf2" href="#" onclick="setTreeLink(this, 'TreeAllHints');">All Hints</a></li>
-
                         <li class=""><a class="icon iconSettings" href="#" onclick="setTreeLink(this, 'TreeSettings');">Settings</a></li>
-
                         <li class="shareTreeLink"><a class="icon iconShare" href="#" onclick="setTreeLink(this, 'TreeSettingsShareInvite');">Sharing</a></li>
-
                     </ul>
                 </div>
-
 
                 <div class="calloutDomContent form" id="personLookup">
                     <div class="labelIconOnly">
@@ -622,9 +633,7 @@
 
                 <div class="noDisplay" id="findPersonActions">
                     <ul>
-
                         <li><a class="autocompleteResult icon iconHome" href="http://person.ancestry.com/tree/81749066/person/42446045903" id="HomePersonLink">Home Person</a></li>
-
                         <li><a class="autocompleteResult icon iconList" href="http://trees.ancestry.com/tree/81749066/listofallpeople" id="ListOfAllPeopleLink">List of All People</a></li>
                     </ul>
                 </div>
@@ -633,42 +642,47 @@
                 <div class="calloutDomContent" id="researchToolsCalloutDomContent">
                     <ul class="researchToolsList">
 
-                        <li><a class="link icon iconTreePedigree" onclick="personAnalyticsTrackClick('viewInTree');" href="http://trees.ancestry.com/tree/81749066/family?cfpid=42446045903">View in Tree</a></li>
-
+                        <li><a class="link icon iconTreePedigree" onclick="personAnalyticsTrackClick('viewInTree');" 
+                               href="http://trees.ancestry.com/tree/81749066/family?cfpid=42446045903">View in Tree</a>
+                        </li>
                         <li><button class="link icon iconNoteAlt myNotesBtn" type="button">View Notes</button></li>
-
-                        <li><button class="link icon iconMessageBoard personCommentsBtn" type="button">View Comments<span class="badge badgeColor1 hideBadge"></span></button></li>
-
-                        <li><a class="icon iconMerge" href="http://trees.ancestry.com/tree/81749066/person/mergeduplicate/pickperson?pid=42446045903&pid1=42446045903" onclick="setMergeDuplicateWithHistoryUrl(this); personAnalyticsTrackClick('MergeDuplicate');">Merge with Duplicate</a></li>
-
-                        <li><button class="link icon iconPlus" id="saveToTree" onclick="saveToTree(); personAnalyticsTrackClick('saveToTree');">Save to Tree</button></li>
-
+                        <li>
+                            <button class="link icon iconMessageBoard personCommentsBtn" type="button">View Comments<span class="badge badgeColor1 hideBadge"></span></button></li>
+                        
+                        <li><a class="icon iconMerge" href="http://trees.ancestry.com/tree/81749066/person/mergeduplicate/pickperson?pid=42446045903&pid1=42446045903" onclick="setMergeDuplicateWithHistoryUrl(this);
+                            personAnalyticsTrackClick('MergeDuplicate');">Merge with Duplicate</a>
+                        </li>
+                        
+                        <li><button class="link icon iconPlus" id="saveToTree" onclick="saveToTree();
+                            personAnalyticsTrackClick('saveToTree');">Save to Tree</button></li>
+                        
                         <li class="printOptionForLifeStoryAndFacts"><button class="link icon iconPrint">Print</button></li>
-
-                        <li><button class="link icon iconFamily" id="memberConnect" onclick="setMemberConnectWithHistoryUrl(this); personAnalyticsTrackClick('memberConnect');">Member Connect</button></li>
-
-                        <li class="hide480"><button class="link icon iconTools iconAfter iconAfterCheck showTools" type="button">Show Research Tools</button></li>
+                        
+                        <li><button class="link icon iconFamily" id="memberConnect" onclick="setMemberConnectWithHistoryUrl(this);
+                            personAnalyticsTrackClick('memberConnect');">Member Connect</button></li>
+                        <li class="hide480"><button class="link icon iconTools iconAfter iconAfterCheck showTools" type="button">Show Research Tools</button>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="calloutDomContent" id="editToolsCalloutDomContent">
                     <ul class="editToolsList">
-
                         <li><button class="link icon iconEdit" id="quickEdit" onclick="quickEdit(); personAnalyticsTrackClick('quickEdit');">Quick Edit</button></li>
-
                         <li><button class="link icon iconFamily" id="editRelationships" onclick="editRelationships(); personAnalyticsTrackClick('editRelationships');">Edit Relationships</button></li>
-
                         <li><button class="link icon iconTrash" onclick="removePersonModal(); personAnalyticsTrackClick('removePerson');" type="button">Delete Person</button></li>
-
                     </ul>
                 </div>
 
                 <div class="calloutDomContent" id="profileImageCalloutDomContent">
                     <ul class="">
-                        <li><button class="link icon iconImage" id="viewProfileImage" onclick="personAnalyticsTrackClick('viewProfileImage'); setMediaViewerUrl();">View Profile Image</button></li>
-                        <li><button class="link icon iconCrop" id="cropProfileImage" onclick="personAnalyticsTrackClick('cropProfileImage'); setMediaViewerCropUrl();">Resize Profile Image</button></li>
-                        <li><button class="link icon iconGallery" id="chooseProfileImage" onclick="personAnalyticsTrackClick('chooseProfileImage'); showChooseProfileImageModal();">Choose Profile Image</button></li>
-                        <li><button class="link icon iconRemove" onclick="updatePersonProfileImage(); personAnalyticsTrackClick('removeProfileImage');" type="button">Remove Profile Image</button></li>
+                        <li><button class="link icon iconImage" id="viewProfileImage" onclick="personAnalyticsTrackClick('viewProfileImage');
+                            setMediaViewerUrl();">View Profile Image</button></li>
+                        <li><button class="link icon iconCrop" id="cropProfileImage" onclick="personAnalyticsTrackClick('cropProfileImage');
+                            setMediaViewerCropUrl();">Resize Profile Image</button></li>
+                        <li><button class="link icon iconGallery" id="chooseProfileImage" onclick="personAnalyticsTrackClick('chooseProfileImage');
+                            showChooseProfileImageModal();">Choose Profile Image</button></li>
+                        <li><button class="link icon iconRemove" onclick="updatePersonProfileImage();
+                            personAnalyticsTrackClick('removeProfileImage');" type="button">Remove Profile Image</button></li>
                     </ul>
                 </div>
 
@@ -1715,20 +1729,17 @@
 
                     </div>
                 </div>
-                <div class="tabContent tabContentFacts form" id="tabContentFacts">
-                    <div class="personPage personPageFacts" id="personPageFacts">
 
-                    </div>
+                <div class="tabContent tabContentFacts form" id="tabContentFacts">
+                    <div class="personPage personPageFacts" id="personPageFacts"></div>
                 </div>
 
                 <div class="tabContent tabContentGallery" id="tabContentGallery">
-                    <div id="personPageGallery" class="personPage personPageGallery">
-
-                    </div>
+                    <div id="personPageGallery" class="personPage personPageGallery"></div>
                 </div>
+
                 <div class="tabContent tabContentHints" id="tabContentHints">
                     <div id="personPageHints" class="personPage personPageHints personPageHintsResizing csm-component" data-csmcomponentid="Hints">
-
                     </div>
                 </div>
 
