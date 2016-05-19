@@ -361,7 +361,7 @@
                 </li>
             </script>
         </div>
-        <!-- <p> <link rel="stylesheet" type="text/css" href="http://c.mfcreative.com/header/css/headerdefault.css"></link><div class="simpleHead"><div class="topSec clearfix"><div class="ancLogo"><a href="http://www.ancestry.com"><img alt="Ancestry" src="http://c.mfcreative.com/s/0/p/0/i/ances_logo.gif" border="0"></a><span class="ancLeaf"></span></div><ul class="links"><li><a href="https://secure.ancestry.com/security/passwordlogin.aspx">Sign-in</a></li><li><a href="http://www.ancestry.com/subscribe/signup.aspx">Subscribe</a></li><li class="last"><a href="http://www.ancestry.com/s0/help/rd.ashx">Help</a></li></ul></div><div class="btmSec"><ul class="links"><li><a href="http://www.ancestry.com">Home</a></li><li><a href="http://trees.ancestry.com/Default.aspx?req=tree">Family Trees</a></li><li><a href="http://search.ancestry.com/search/">Search</a></li><li><a href="http://community.ancestry.com/">Collaborate</a></li><li class="last"><a href="http://www.ancestry.com/learn">Learning Center</a></li></ul></div></div> </p> 
+        <!-- <p> <link rel="stylesheet" type="text/css" href="http://c.mfcreative.com/header/css/headerdefault.css"></link><div class="simpleHead"><div class="topSec clearfix"><div class="ancLogo"><a href="http://www.ancestry.com"><img alt="Ancestry" src="http://c.mfcreative.com/s/0/p/0/i/ances_logo.gif" border="0"></a><span class="ancLeaf"></span></div><ul class="links"><li><a href="https://secure.ancestry.com/security/passwordlogin.aspx">Sign-in</a></li><li><a href="http://www.ancestry.com/subscribe/signup.aspx">Subscribe</a></li><li class="last"><a href="http://www.ancestry.com/s0/help/rd.ashx">Help</a></li></ul></div><div class="btmSec"><ul class="links"><li><a href="http://www.ancestry.com">Home</a></li><li><a href="http://trees.ancestry.com/Default.aspx?req=tree">Family Trees</a></li><li><a href="http://search.ancestry.com/search/">Search</a></li><li><a href="http://community.ancestry.com/">Collaborate</a></li><li class="last"><a href="http://www.ancestry.com/learn">Learning Center</a></li></ul></div></div> </p>
         -->
     </div>
 
@@ -408,14 +408,13 @@
                         </button>
                     </div>
 
-
                     <a class="ancBtn ancBtnIconOnly480 ancBtnL silver icon iconSearch" href="http://trees.ancestry.com/pt/RecordSearch.aspx?tid=81749066&pid=42446045903&ssrc=pt" onclick="setSearchWithHistoryUrl(this); personAnalyticsTrackClick('searchRecords');">
                         <span class="hideVisually480">Search</span>
                     </a>
                     <button class="ancBtn ancBtnIconOnly480 ancBtnM silver icon iconTools researchToolsButton" onclick="personAnalyticsTrackClick('researchMenuEntry');" type="button">
                         <span class="hideVisually480">Tools</span>
                     </button>
-                    
+
                     <button class="ancBtn ancBtnIconOnly480 ancBtnR silver icon iconEdit editToolsButton" onclick="personAnalyticsTrackClick('editMenuEntry');" type="button">
                         <span class="hideVisually480">Edit</span>
                     </button>
@@ -480,8 +479,7 @@
 
                             </div>
                         </div>
-                        <div class="modal" id="chooseProfileImageModalContainer">
-                        </div>
+                        <div class="modal" id="chooseProfileImageModalContainer"></div>
                     </div>
 
                 </div>
@@ -508,7 +506,6 @@
 
                     <button class="link icon iconPrint" type="button"><span>Print</span></button>
 
-
                     <button class="link icon iconFamily memberConnect" onclick="setMemberConnectWithHistoryUrl(this); personAnalyticsTrackClick('memberConnect');">
                         <span>Member Connect</span>
                     </button>
@@ -520,10 +517,7 @@
                         <a class="tab tabActive iconAfter iconArrowSmallDownAfter" onclick="personAnalyticsTrackClick('lifeStoryTab');personAnalyticsChangePageName('lifestory');logPersonPageContentView('lifestory', '81749066', '42446045903', 'False', 'Owner');" href="http://person.ancestry.com/tree/81749066/person/42446045903/story" id="tabStory">LifeStory</a>
                         <a class="tab iconAfter iconArrowSmallDownAfter" onclick="personAnalyticsTrackClick('factsTab');personAnalyticsChangePageName('facts');logPersonPageContentView('facts', '81749066', '42446045903', 'False', 'Owner');" href="http://person.ancestry.com/tree/81749066/person/42446045903/facts" id="tabFacts">Facts</a>
                         <a class="tab iconAfter iconArrowSmallDownAfter" onclick="setGalleryPubCurrentPage();personAnalyticsTrackClick('galleryTab');personAnalyticsChangePageName('gallery');logPersonPageContentView('gallery', '81749066', '42446045903', 'False', 'Owner');" href="http://person.ancestry.com/tree/81749066/person/42446045903/gallery" id="tabGallery">Gallery</a>
-
-
                         <a class="tab iconAfter iconArrowSmallDownAfter" onclick="setHintsWithHistoryUrl();personAnalyticsTrackClick('hintsTab');personAnalyticsChangePageName('hints');logPersonPageContentView('hints', '81749066', '42446045903', 'False', 'Owner');" href="http://person.ancestry.com/tree/81749066/person/42446045903/hints" id="tabHints">Hints<span class="badge tabBadge hideBadge" id="tabHintCount"></span></a>
-
                         <h2 class="hideVisually">Navigation Research Tabs</h2>
                     </nav>
                 </div>
@@ -539,11 +533,11 @@
                         };
 
                         ancestry.pub.getUrl('MyCanvasPrint', options, function (err, url) {
-                                if (err && window.console != null) {
-                                    console.warn(err);
-                                }
-                                $link.attr('href', url);
-                            });
+                            if (err && window.console != null) {
+                                console.warn(err);
+                            }
+                            $link.attr('href', url);
+                        });
                     }
 
                     $(function () {
@@ -1706,7 +1700,7 @@
 
                                 personData: {
                                     cacheUrl: 'http://c.mfcreative.com',
-//                                    animateCardUrl: 'http://c.mfcreative.com/PPS_WEB/4.3.3591.3591/cdn/js/animateCard.js?v=92',
+                                    //                                    animateCardUrl: 'http://c.mfcreative.com/PPS_WEB/4.3.3591.3591/cdn/js/animateCard.js?v=92',
                                     animateCardUrl: './lib/PPS_WEB/4.3.3591.3591/cdn/js/animateCard.js',
                                     personId: '42446045903',
                                     treeId: '81749066',
