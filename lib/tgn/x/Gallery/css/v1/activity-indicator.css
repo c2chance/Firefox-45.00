@@ -10,7 +10,10 @@
 .loading::before {
     -webkit-animation: loadingOpacity 1s 1s linear forwards,loading 1s linear infinite;
     animation: loadingOpacity 1s 1s linear forwards,loading 1s linear infinite;
+/*    
     background-image: url("/i/v1/loading.png");
+*/    
+    background-image: url("../../i/v1/loading.png");
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -90,19 +93,34 @@
 .loadingText.loadingSmall::before {
     top: 22px
 }
-
+/*
 .loading.ancBtn::before,.loadingOnGreen::before,.loadingOnBlack::before {
     background-image: url("/i/v1/loading-on-dark.png")
 }
+*/
+.loading.ancBtn::before,.loadingOnGreen::before,.loadingOnBlack::before {
+    background-image: url("../../i/v1/loading-on-dark.png")
+}
 
 @media(min--moz-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio: 3/2),(-webkit-min-device-pixel-ratio:1.5),(min-device-pixel-ratio:1.5),(min-resolution:144dpi),(min-resolution:1.5dppx) {
+/*    
     .loading::before {
         background-image:url("/i/v1/loading-2x.png")
     }
+*/
+    .loading::before {
+        background-image:url("../../i/v1/loading-2x.png")
+    }
 
+/*
     .loading.ancBtn::before,.loadingOnGreen::before,.loadingOnBlack::before {
         background-image: url("/i/v1/loading-on-dark-2x.png")
     }
+*/
+    .loading.ancBtn::before,.loadingOnGreen::before,.loadingOnBlack::before {
+        background-image: url("../../i/v1/loading-on-dark-2x.png")
+    }
+    
 }
 
 @-webkit-keyframes loading {
