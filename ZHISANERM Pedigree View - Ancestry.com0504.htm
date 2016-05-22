@@ -5,13 +5,25 @@
 <link rel="stylesheet" type="text/css" href="./lib/tgn/x/css/v1/activity-indicator.css" />
 <link rel="stylesheet" type="text/css" href="./lib/tgn/5/css/v2/alert.css" />
 <link rel="stylesheet" type="text/css" href="./lib/tgn/x/css/v2/autocomplete.css" />
+<!--
 <link rel="stylesheet" type="text/css" href="./lib/tgn/7/css/v1/button.css" />
+-->
+<link rel="stylesheet" type="text/css" href="./lib/tgn/x/css/v1/button.css" />
+
 <link rel="stylesheet" type="text/css" href="./lib/tgn/5/css/v1/callout.css" />
 <link rel="stylesheet" type="text/css" href="./lib/tgn/x/css/v1/card.css" />
+<!--
 <link rel="stylesheet" type="text/css" href="./lib/tgn/9/css/v1/container.css" />
+-->
+<link rel="stylesheet" type="text/css" href="./lib/tgn/x/css/v1/container.css" />
 <link rel="stylesheet" type="text/css" href="./lib/tgn/13/css/v1/form.css" />
+<!--
 <link rel="stylesheet" type="text/css" href="./lib/tgn/7/css/v1/grid.css" />
 <link rel="stylesheet" type="text/css" href="./lib/tgn/7/css/v1/icon.css" />
+-->
+<link rel="stylesheet" type="text/css" href="./lib/tgn/x/css/v1/grid.css" />
+<link rel="stylesheet" type="text/css" href="./lib/tgn/x/css/v1/icon.css" />
+
 <link rel="stylesheet" type="text/css" href="./lib/tgn/0/css/v2/modal.css" />
 <link rel="stylesheet" type="text/css" href="./lib/tgn/8/css/v3/modal.css" />
 <link rel="stylesheet" type="text/css" href="./lib/tgn/x/css/v1/photo.css" />
@@ -54,7 +66,11 @@
 <script type="text/javascript" src="./lib/tgn/x/lib/tgn/util/v1.1/resourcemanager.js"></script>
 <script type="text/javascript" src="./lib/tgn/2/js/v2/alert.js"></script>
 <script type="text/javascript" src="./lib/tgn/x/js/v2/autocomplete.js"></script>
+<!--
 <script type="text/javascript" src="./lib/tgn/7/js/v1/callout.js"></script>
+-->
+<script type="text/javascript" src="./lib/tgn/x/js/v1/callout.js"></script>
+
 <script type="text/javascript" src="./lib/tgn/2/js/v2/modals.js"></script>
 <script type="text/javascript" src="./lib/tgn/6/js/v3/modal.js"></script>
 <script type="text/javascript" src="./lib/tgn/4/js/v2/tab.js"></script>
@@ -469,11 +485,15 @@
                 <div class="pageActions owner" id="treeCardDivWrapper">
 
                     <nav aria-label="Breadcrumbs" class="pageCrumbs" role="navigation">
-                        <button class="ancBtn ancBtnIconOnly320 silver icon iconTreePedigree treePagesButton" title="ZhiSanErm Family Tree"><span class="hideVisually320 textClipped">ZhiSanErm Family Tree</span></button>
+                        <button class="ancBtn ancBtnIconOnly320 silver icon iconTreePedigree treePagesButton" title="ZhiSanErm Family Tree">
+                            <span class="hideVisually320 textClipped">ZhiSanErm Family Tree</span>
+                        </button>
                         <span id="ctl00_ctl00_ctl00_MainContent_ctl14_ctl00_treeNameDiv" class="treeIsNotLinked"></span>
                     </nav>
 
-                    <label class="ancBtn ancBtnIconOnly480 silver icon iconPersonFind findPersonButton" for="typeAheadPersonText"><span class="hideVisually480">Find Person</span></label>
+                    <label class="ancBtn ancBtnIconOnly480 silver icon iconPersonFind findPersonButton" for="typeAheadPersonText">
+                        <span class="hideVisually480">Find Person</span>
+                    </label>
 
                     <div class="noDisplay" id="CardSlimNoDisplay">
 
@@ -494,8 +514,8 @@
                                             <label class="icon iconSearch" for="typeAheadPersonText"></label>
                                             <input id="typeAheadPersonText" name="typeAheadPersonText" placeholder="Type in a name to search" type="text" />
                                         </div>
-
                                     </div>
+
                                     <div class="personFilters" id="scDropDownMenu">
                                         <ul id="personLinks">
                                             <li>
@@ -522,6 +542,7 @@
 
                     <script type="text/javascript">
                         var $pageActions = $('.pageActions');
+
                         $(function () {
 
                             $('.treeIsLinked').addClass('ancBtn ancBtnIconOnly silver');
@@ -628,6 +649,7 @@
                             }
 
                         });
+
                         /* Check if page actions */
                         function checkPageActions() {
                             $pageActions.removeClass('showMiniTreeOwnerAndRole');
@@ -663,7 +685,7 @@
                             window.open('', '_blank', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=no, copyhistory=no, width=500, height=410');
                         }
                     </script>
-                </div>
+                </div> <!--<div class="pageActions owner" id="treeCardDivWrapper">-->
 
                 <script language="javascript" src="./lib/tgn/ancestry/ancestry(2).jsx"></script>
 
@@ -687,7 +709,11 @@
                 <script type="text/javascript" src="./lib/tgn/x/tre_atw/4.2.2874.2874/cdn/plugin/jquery.jscrollpane.min.js"></script>
                 <script type="text/javascript" src="./lib/tgn/0/lib/jquery/jquery.tmpl.min.js"></script>
                 <script type="text/javascript" src="./lib/tgn/x/tre_atw/4.2.2874.2874/cdn/treemap/pointertouchmouse.js"></script>
+                <!--
                 <script type="text/javascript" src="./lib/tgn/9/js/mbox.js"></script>
+                -->
+                <script type="text/javascript" src="./lib/tgn/x/js/mbox.js"></script>
+
                 <script tyep="text/javascript" src="./lib/tgn/x/tre_atw/4.2.2874.2874/cdn/treemap/awesome-pedigree.js"></script>
                 <script type="text/javascript" src="./lib/tgn/0/lib/yui.2.7.0/build/container/container-min.js"></script>
                 <script type="text/javascript" src="./lib/tgn/0/lib/yui.2.7.0/build/datasource/datasource-min.js"></script>
@@ -1669,6 +1695,7 @@
                                     </form>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

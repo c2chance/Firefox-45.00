@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 @font-face {
     font-family: "ancestry-icon";
     src: url("../../font/v1/28/ancestry-icon.woff2") format("woff2"),
@@ -846,10 +846,15 @@
     .iconLeafImage::before {
         background-image:url("/i/v1/leaf-30-2x.png")
     }
-
+    /*
     .iconLeafImageSize1::before {
         background-image: url("/i/v1/leaf-50-2x.png")
     }
+    */
+    .iconLeafImageSize1::before {
+        background-image: url("../../i/v1/leaf-50-2x.png")
+    }
+
 
     .iconLeafImageSize2::before {
         background-image: url("/i/v1/leaf-100-2x.png")
