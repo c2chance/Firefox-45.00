@@ -1,1 +1,24 @@
-@charset "utf-8";.InviteePnl .PnlBd{padding:20px}.InviteePnl .PnlBd h2{color:#333;font:700 15px/21px Georgia,"Times New Roman",Times,serif;margin:0 0 10px}.InviteePnl .PnlBd p{color:#333;font:400 12px/18px "Helvetica Neue",Arial,sans-serif}.InviteePnl .PnlBd ul{padding:0 15px}.InviteePnl .PnlBd li{color:#333;font:700 12px/18px "Helvetica Neue",Arial,sans-serif;list-style:outside disc}
+@charset "utf-8";.InviteePnl .PnlBd {
+    padding: 20px
+}
+
+.InviteePnl .PnlBd h2 {
+    color: #333;
+    font: 700 15px/21px Georgia,"Times New Roman",Times,serif;
+    margin: 0 0 10px
+}
+
+.InviteePnl .PnlBd p {
+    color: #333;
+    font: 400 12px/18px "Helvetica Neue",Arial,sans-serif
+}
+
+.InviteePnl .PnlBd ul {
+    padding: 0 15px
+}
+
+.InviteePnl .PnlBd li {
+    color: #333;
+    font: 700 12px/18px "Helvetica Neue",Arial,sans-serif;
+    list-style: outside disc
+}

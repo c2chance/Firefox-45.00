@@ -1,1 +1,241 @@
-@charset "utf-8";html{}.pageHeader{position:relative;overflow:hidden;z-index:2}.pageActions{height:35px;position:relative}.pageActions.pageActionsResizing{overflow:hidden}.pageActions .findPersonButton{cursor:pointer}.pageActions.noTreePages .pageCrumbs a.iconTreePedigree{border-radius:3px;color:#fff!important;width:auto}.pageActions.noTreePages .pageCrumbs a.iconTreePedigree::before{color:#b8d94c!important;margin-right:.25em}.pageActions.noTreePages .pageCrumbs a.iconTreePedigree .hideVisually480{display:inline!important}.pageActions.noTreePages .pageCrumbs a.iconTreePedigree+.treePagesButton{display:none}@media only screen and (max-width:479px){.pageActions.noTreePages .pageCrumbs a.iconTreePedigree:not(.calloutTrigger){width:30px}}.pageCrumbs .treePagesButton:not(.calloutTrigger){cursor:default!important;pointer-events:none!important}.pageActions:not(.showMiniTreeOwnerAndRole) .treeOwnerAndRole.hideIfNeeded,.pageActions.showMiniTreeOwnerAndRole .treeOwnerAndRole.showIfNeeded{display:inline-block!important}.pageActions.showMiniTreeOwnerAndRole .treeOwnerAndRole.hideIfNeeded,.pageActions:not(.showMiniTreeOwnerAndRole) .treeOwnerAndRole.showIfNeeded{display:none!important;position:absolute;visibility:hidden;z-index:-1}.pageCrumbs .treeIsLinked{margin-left:6px;visibility:hidden}.pageCrumbs .treeIsLinked.ancBtn{visibility:visible}.pageCrumbs .treeIsLinked,.pageCrumbs a.iconTreePedigree{color:#b8d94c!important;cursor:pointer}.pageCrumbs .treeOwnerAndRole{display:inline-block;margin-left:6px;vertical-align:top}.pageCrumbs .treeOwnerAndRole.showIfNeeded{padding-left:0}.pageCrumbs .treeOwnerAndRole.hideIfNeeded .userCard,.pageCrumbs .treeOwnerAndRole.hideIfNeeded .yourRoleText{line-height:30px;vertical-align:top}.pageCrumbs .treeOwnerAndRole.hideIfNeeded .yourRoleText span{margin:0 8px}.pageHeader.bgColor8 #treeOwnerAndRoleUserCard{color:#03678b}.pageHeader.bgColor8 #treeOwnerAndRoleUserCard:active,.pageHeader.bgColor8 #treeOwnerAndRoleUserCard:hover,.pageHeader.bgColor8 #treeOwnerAndRoleUserCard:focus{color:#1b88b0}.pageCrumbs .treePagesButton .textClipped,.pageCrumbs .iconTreePedigree .textClipped{display:inline-block;max-width:200px;vertical-align:top}.pageActions .treeOwnerAndRoleInfo{visibility:hidden}.pageCrumbs .treeOwnerAndRole{margin-right:10px}.pageCrumbs .treeOwnerAndRole.showIfNeeded{margin:0 0 0 6px}.pageCrumbs .treeOwnerAndRole.showIfNeeded .treeOwnerAndRoleCalloutButton{margin:0}.treeOwnerAndRoleCallout .userCard{font-weight:bold}.treeOwnerAndRoleCallout .userCard,.treeOwnerAndRoleCallout .yourRoleText{display:block}.treeOwnerAndRoleCallout .yourRoleText{margin-left:40px}.treeOwnerAndRoleCallout .yourRoleText span{display:none}@media only screen and (max-width:479px){.pageActions .iconTreePedigree+.treePagesButton{width:30px}.pageActions .iconTreePedigree+.treePagesButton::after{left:auto!important}}@media only screen and (max-width:767px){.pageActions>.iconPersonFind{width:30px}.pageActions>.iconPersonFind::after{display:none}}.findPersonCallout{min-width:300px;overflow:hidden}.findPersonCallout .scSearch{margin:10px}.findPersonCallout .iconSearch{z-index:4}.findPersonCallout #typeAheadPersonText{background-color:#fff;position:relative;z-index:3}.findPersonCallout #typeAheadPersonText+.loading.loadingSmall{position:absolute;right:6px;top:6px;z-index:2}.findPersonCallout #typeAheadPersonText.loading.loadingSmall{background:none;z-index:1}.findPersonCallout .cardSearch{border-bottom:1px solid rgba(160,160,160,.2)}#teePagesMenuTitle+.treePagesList{transition:max-height 200ms}#scDropDownMenu .yui-ac-content{background:none;border-color:rgba(160,160,160,.2);border-left:none;border-right:none;border-radius:0;box-shadow:none;padding:0;position:relative}#scDropDownMenu .yui-ac-bd li:hover,#scDropDownMenu .yui-ac-bd li:focus,#scDropDownMenu .yui-ac-bd li.yui-ac-highlight{background-color:rgba(160,160,160,.2);color:#36322d}#scDropDownMenu .yui-ac-bd li .autoSuggestHighlight{color:#7a9c0f}#scDropDownMenu .noMatches{border-bottom:1px solid rgba(160,160,160,.2);border-top:1px solid rgba(160,160,160,.2);padding:10px}#teePagesMenuTitle.disabled{opacity:.5;pointer-events:none}#treeCardDivWrapper>.alert:first-child:last-child{margin:0 10px 20px;position:relative;top:10px}#treeCardDivWrapper>.alert:first-child~.alert{margin:10px}
+@charset "utf-8";html {
+}
+
+.pageHeader {
+    position: relative;
+    overflow: hidden;
+    z-index: 2
+}
+
+.pageActions {
+    height: 35px;
+    position: relative
+}
+
+.pageActions.pageActionsResizing {
+    overflow: hidden
+}
+
+.pageActions .findPersonButton {
+    cursor: pointer
+}
+
+.pageActions.noTreePages .pageCrumbs a.iconTreePedigree {
+    border-radius: 3px;
+    color: #fff!important;
+    width: auto
+}
+
+.pageActions.noTreePages .pageCrumbs a.iconTreePedigree::before {
+    color: #b8d94c!important;
+    margin-right: .25em
+}
+
+.pageActions.noTreePages .pageCrumbs a.iconTreePedigree .hideVisually480 {
+    display: inline!important
+}
+
+.pageActions.noTreePages .pageCrumbs a.iconTreePedigree+.treePagesButton {
+    display: none
+}
+
+@media only screen and (max-width: 479px) {
+    .pageActions.noTreePages .pageCrumbs a.iconTreePedigree:not(.calloutTrigger) {
+        width:30px
+    }
+}
+
+.pageCrumbs .treePagesButton:not(.calloutTrigger) {
+    cursor: default!important;
+    pointer-events: none!important
+}
+
+.pageActions:not(.showMiniTreeOwnerAndRole) .treeOwnerAndRole.hideIfNeeded,.pageActions.showMiniTreeOwnerAndRole .treeOwnerAndRole.showIfNeeded {
+    display: inline-block!important
+}
+
+.pageActions.showMiniTreeOwnerAndRole .treeOwnerAndRole.hideIfNeeded,.pageActions:not(.showMiniTreeOwnerAndRole) .treeOwnerAndRole.showIfNeeded {
+    display: none!important;
+    position: absolute;
+    visibility: hidden;
+    z-index: -1
+}
+
+.pageCrumbs .treeIsLinked {
+    margin-left: 6px;
+    visibility: hidden
+}
+
+.pageCrumbs .treeIsLinked.ancBtn {
+    visibility: visible
+}
+
+.pageCrumbs .treeIsLinked,.pageCrumbs a.iconTreePedigree {
+    color: #b8d94c!important;
+    cursor: pointer
+}
+
+.pageCrumbs .treeOwnerAndRole {
+    display: inline-block;
+    margin-left: 6px;
+    vertical-align: top
+}
+
+.pageCrumbs .treeOwnerAndRole.showIfNeeded {
+    padding-left: 0
+}
+
+.pageCrumbs .treeOwnerAndRole.hideIfNeeded .userCard,.pageCrumbs .treeOwnerAndRole.hideIfNeeded .yourRoleText {
+    line-height: 30px;
+    vertical-align: top
+}
+
+.pageCrumbs .treeOwnerAndRole.hideIfNeeded .yourRoleText span {
+    margin: 0 8px
+}
+
+.pageHeader.bgColor8 #treeOwnerAndRoleUserCard {
+    color: #03678b
+}
+
+.pageHeader.bgColor8 #treeOwnerAndRoleUserCard:active,.pageHeader.bgColor8 #treeOwnerAndRoleUserCard:hover,.pageHeader.bgColor8 #treeOwnerAndRoleUserCard:focus {
+    color: #1b88b0
+}
+
+.pageCrumbs .treePagesButton .textClipped,.pageCrumbs .iconTreePedigree .textClipped {
+    display: inline-block;
+    max-width: 200px;
+    vertical-align: top
+}
+
+.pageActions .treeOwnerAndRoleInfo {
+    visibility: hidden
+}
+
+.pageCrumbs .treeOwnerAndRole {
+    margin-right: 10px
+}
+
+.pageCrumbs .treeOwnerAndRole.showIfNeeded {
+    margin: 0 0 0 6px
+}
+
+.pageCrumbs .treeOwnerAndRole.showIfNeeded .treeOwnerAndRoleCalloutButton {
+    margin: 0
+}
+
+.treeOwnerAndRoleCallout .userCard {
+    font-weight: bold
+}
+
+.treeOwnerAndRoleCallout .userCard,.treeOwnerAndRoleCallout .yourRoleText {
+    display: block
+}
+
+.treeOwnerAndRoleCallout .yourRoleText {
+    margin-left: 40px
+}
+
+.treeOwnerAndRoleCallout .yourRoleText span {
+    display: none
+}
+
+@media only screen and (max-width: 479px) {
+    .pageActions .iconTreePedigree+.treePagesButton {
+        width:30px
+    }
+
+    .pageActions .iconTreePedigree+.treePagesButton::after {
+        left: auto!important
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .pageActions>.iconPersonFind {
+        width:30px
+    }
+
+    .pageActions>.iconPersonFind::after {
+        display: none
+    }
+}
+
+.findPersonCallout {
+    min-width: 300px;
+    overflow: hidden
+}
+
+.findPersonCallout .scSearch {
+    margin: 10px
+}
+
+.findPersonCallout .iconSearch {
+    z-index: 4
+}
+
+.findPersonCallout #typeAheadPersonText {
+    background-color: #fff;
+    position: relative;
+    z-index: 3
+}
+
+.findPersonCallout #typeAheadPersonText+.loading.loadingSmall {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    z-index: 2
+}
+
+.findPersonCallout #typeAheadPersonText.loading.loadingSmall {
+    background: none;
+    z-index: 1
+}
+
+.findPersonCallout .cardSearch {
+    border-bottom: 1px solid rgba(160,160,160,.2)
+}
+
+#teePagesMenuTitle+.treePagesList {
+    transition: max-height 200ms
+}
+
+#scDropDownMenu .yui-ac-content {
+    background: none;
+    border-color: rgba(160,160,160,.2);
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    position: relative
+}
+
+#scDropDownMenu .yui-ac-bd li:hover,#scDropDownMenu .yui-ac-bd li:focus,#scDropDownMenu .yui-ac-bd li.yui-ac-highlight {
+    background-color: rgba(160,160,160,.2);
+    color: #36322d
+}
+
+#scDropDownMenu .yui-ac-bd li .autoSuggestHighlight {
+    color: #7a9c0f
+}
+
+#scDropDownMenu .noMatches {
+    border-bottom: 1px solid rgba(160,160,160,.2);
+    border-top: 1px solid rgba(160,160,160,.2);
+    padding: 10px
+}
+
+#teePagesMenuTitle.disabled {
+    opacity: .5;
+    pointer-events: none
+}
+
+#treeCardDivWrapper>.alert:first-child:last-child {
+    margin: 0 10px 20px;
+    position: relative;
+    top: 10px
+}
+
+#treeCardDivWrapper>.alert:first-child~.alert {
+    margin: 10px
+}

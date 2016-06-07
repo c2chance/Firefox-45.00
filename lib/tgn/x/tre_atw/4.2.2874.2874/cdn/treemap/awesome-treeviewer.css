@@ -168,7 +168,7 @@ body #FooterRegion {
     }
 }
 
-@supports (-moz-appearance:meterbar) {
+@supports (-moz-appearance: meterbar) {
     .treeViewerAwesome.openhand {
         cursor: grab;
     }
@@ -350,13 +350,13 @@ body #FooterRegion {
     display: none;
 }
 @media only screen and (max-width: 767px) {
-.pullToFullScreen.gestureing .treeViewerAwesome .trVp {
-    pointer-events: none;
-}
-body:not(.treeViewerAwesomeNavigating) .treeViewerAwesome .trGraph {
-    pointer-events: none;
-}
-body:not(.treeViewerAwesomeNavigating) .treeViewerAwesome .openhand, body:not(.treeViewerAwesomeNavigating) .treeViewerAwesome .closehand, body:not(.treeViewerAwesomeNavigating) .treeViewerAwesome .closedhand {
-    cursor: pointer;
-}
+    .pullToFullScreen.gestureing .treeViewerAwesome .trVp {
+        pointer-events: none;
+    }
+    body:not(.treeViewerAwesomeNavigating) .treeViewerAwesome .trGraph {
+        pointer-events: none;
+    }
+    body:not(.treeViewerAwesomeNavigating) .treeViewerAwesome .openhand, body:not(.treeViewerAwesomeNavigating) .treeViewerAwesome .closehand, body:not(.treeViewerAwesomeNavigating) .treeViewerAwesome .closedhand {
+        cursor: pointer;
+    }
 }

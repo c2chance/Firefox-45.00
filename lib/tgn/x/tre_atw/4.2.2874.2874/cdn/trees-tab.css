@@ -1,1 +1,72 @@
-@charset "utf-8";html{}.tabHints{white-space:nowrap}.tabHints span,.tabHints span.icon:before{display:inline-block;vertical-align:text-top;white-space:nowrap}.tabHints span.itemCount{display:none;padding:1px 3px;position:static}div.pendingHintsCountUpdate{display:none;float:right;margin-top:16px;position:relative;z-index:3}div.pendingHintsCountUpdate .hintsTitleAndCount a{display:block;text-decoration:none}div.pendingHintsCountUpdate .hintsTitleAndCount .itemCount{font-size:16px;margin-left:.25em;padding:1px 3px 0;position:relative;top:4px;vertical-align:top}.pageHeader~.alertSuccess{margin-bottom:20px}@media only screen and (max-width:767px){div.pendingHintsCountUpdate{display:block}.tabHints span.itemCount{display:inline-block}.tabsExpanded{z-index:1002}}@media only screen and (max-width:479px){div.pendingHintsCountUpdate{margin-top:8px}.tabs{clear:both}.pageHeader~.alertSuccess{margin-bottom:12px}}
+@charset "utf-8";html {
+}
+
+.tabHints {
+    white-space: nowrap
+}
+
+.tabHints span,.tabHints span.icon:before {
+    display: inline-block;
+    vertical-align: text-top;
+    white-space: nowrap
+}
+
+.tabHints span.itemCount {
+    display: none;
+    padding: 1px 3px;
+    position: static
+}
+
+div.pendingHintsCountUpdate {
+    display: none;
+    float: right;
+    margin-top: 16px;
+    position: relative;
+    z-index: 3
+}
+
+div.pendingHintsCountUpdate .hintsTitleAndCount a {
+    display: block;
+    text-decoration: none
+}
+
+div.pendingHintsCountUpdate .hintsTitleAndCount .itemCount {
+    font-size: 16px;
+    margin-left: .25em;
+    padding: 1px 3px 0;
+    position: relative;
+    top: 4px;
+    vertical-align: top
+}
+
+.pageHeader~.alertSuccess {
+    margin-bottom: 20px
+}
+
+@media only screen and (max-width: 767px) {
+    div.pendingHintsCountUpdate {
+        display:block
+    }
+
+    .tabHints span.itemCount {
+        display: inline-block
+    }
+
+    .tabsExpanded {
+        z-index: 1002
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    div.pendingHintsCountUpdate {
+        margin-top:8px
+    }
+
+    .tabs {
+        clear: both
+    }
+
+    .pageHeader~.alertSuccess {
+        margin-bottom: 12px
+    }
+}
