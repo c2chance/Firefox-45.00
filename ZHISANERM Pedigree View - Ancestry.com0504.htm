@@ -659,8 +659,9 @@
                         function callForPersonPrintView() {
                             $TreesFunc.Miscellaneous.printPersonView('');
                         }
+
                         /* Allows redirect to share tree from callout. */
-                        function callForShareTreeLink() {
+                        function callForShareTreeLink() { // tre_atw/cdn/tmp/loadondemand.js
                             $Anc.load({
                                 type: 'AncModal',
                                 url: 'http://trees.ancestry.com/tree/81749066/settings/sharing/modalinvite',
@@ -673,7 +674,7 @@
                                 libs: [{
                                     name: 'modalinvite',
                                     type: 'js',
-                                    fullpath: './tre_atw/4.2.2874.2874/cdn/modalinvite.js'
+                                    fullpath: './lib/tgn/x/tre_atw/4.2.2874.2874/cdn/modalinvite.js'
                                 }]
                             });
                         }
@@ -2090,7 +2091,7 @@
             TGN.Ancestry.Trees.selectPerson.saveRecordToTree = function (attachToPerson) {
                 if (!v_spJsLoaded) {
                     //$.getScript('http://c.mfcreative.com/tre_atw/4.2.2874.2874/cdn/selectpersonondemand_responsive.js', function () {
-                    $.getScript('./lib/x/tre_atw/4.2.2874.2874/cdn/selectpersonondemand_responsive.js', function () {
+                    $.getScript('./lib/tgn/x/tre_atw/4.2.2874.2874/cdn/selectpersonondemand_responsive.js', function () {
                         v_spJsLoaded = true;
                         TGN.Ancestry.Trees.selectPerson.modalInit(attachToPerson);
                     });
