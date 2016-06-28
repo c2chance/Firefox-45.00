@@ -1,4 +1,6 @@
-@charset "utf-8";html {
+@charset "utf-8";
+
+html {
 }
 
 .treeViewerAwesome .trGraph {
@@ -24,13 +26,41 @@
     height: .2230769230769231em
 }
 
-.treeViewerAwesome .nodePedigree[id$=":1"]::before,.treeViewerAwesome .nodePedigree[id$=":3"]::before,.treeViewerAwesome .nodePedigree[id$=":5"]::before,.treeViewerAwesome .nodePedigree[id$=":7"]::before,.treeViewerAwesome .nodePedigree[id$=":9"]::before,.treeViewerAwesome .nodePedigree[id$=":11"]::before,.treeViewerAwesome .nodePedigree[id$=":13"]::before,.treeViewerAwesome .nodePedigree[id$=":15"]::before,.treeViewerAwesome .nodePedigree[id$=":17"]::before,.treeViewerAwesome .nodePedigree[id$=":19"]::before,.treeViewerAwesome .nodePedigree[id$=":21"]::before,.treeViewerAwesome .nodePedigree[id$=":23"]::before,.treeViewerAwesome .nodePedigree[id$=":25"]::before,.treeViewerAwesome .nodePedigree[id$=":27"]::before,.treeViewerAwesome .nodePedigree[id$=":29"]::before {
+.treeViewerAwesome .nodePedigree[id$=":1"]::before,
+.treeViewerAwesome .nodePedigree[id$=":3"]::before,
+.treeViewerAwesome .nodePedigree[id$=":5"]::before,
+.treeViewerAwesome .nodePedigree[id$=":7"]::before,
+.treeViewerAwesome .nodePedigree[id$=":9"]::before,
+.treeViewerAwesome .nodePedigree[id$=":11"]::before,
+.treeViewerAwesome .nodePedigree[id$=":13"]::before,
+.treeViewerAwesome .nodePedigree[id$=":15"]::before,
+.treeViewerAwesome .nodePedigree[id$=":17"]::before,
+.treeViewerAwesome .nodePedigree[id$=":19"]::before,
+.treeViewerAwesome .nodePedigree[id$=":21"]::before,
+.treeViewerAwesome .nodePedigree[id$=":23"]::before,
+.treeViewerAwesome .nodePedigree[id$=":25"]::before,
+.treeViewerAwesome .nodePedigree[id$=":27"]::before,
+.treeViewerAwesome .nodePedigree[id$=":29"]::before {
     border-top: .0307692307692308em solid #aeaca4;
     margin-top: -.0153846153846154em;
     top: 50%
 }
 
-.treeViewerAwesome .nodePedigree[id$=":2"]::before,.treeViewerAwesome .nodePedigree[id$=":4"]::before,.treeViewerAwesome .nodePedigree[id$=":6"]::before,.treeViewerAwesome .nodePedigree[id$=":8"]::before,.treeViewerAwesome .nodePedigree[id$=":10"]::before,.treeViewerAwesome .nodePedigree[id$=":12"]::before,.treeViewerAwesome .nodePedigree[id$=":14"]::before,.treeViewerAwesome .nodePedigree[id$=":16"]::before,.treeViewerAwesome .nodePedigree[id$=":18"]::before,.treeViewerAwesome .nodePedigree[id$=":20"]::before,.treeViewerAwesome .nodePedigree[id$=":22"]::before,.treeViewerAwesome .nodePedigree[id$=":24"]::before,.treeViewerAwesome .nodePedigree[id$=":26"]::before,.treeViewerAwesome .nodePedigree[id$=":28"]::before,.treeViewerAwesome .nodePedigree[id$=":30"]::before {
+.treeViewerAwesome .nodePedigree[id$=":2"]::before,
+.treeViewerAwesome .nodePedigree[id$=":4"]::before,
+.treeViewerAwesome .nodePedigree[id$=":6"]::before,
+.treeViewerAwesome .nodePedigree[id$=":8"]::before,
+.treeViewerAwesome .nodePedigree[id$=":10"]::before,
+.treeViewerAwesome .nodePedigree[id$=":12"]::before,
+.treeViewerAwesome .nodePedigree[id$=":14"]::before,
+.treeViewerAwesome .nodePedigree[id$=":16"]::before,
+.treeViewerAwesome .nodePedigree[id$=":18"]::before,
+.treeViewerAwesome .nodePedigree[id$=":20"]::before,
+.treeViewerAwesome .nodePedigree[id$=":22"]::before,
+.treeViewerAwesome .nodePedigree[id$=":24"]::before,
+.treeViewerAwesome .nodePedigree[id$=":26"]::before,
+.treeViewerAwesome .nodePedigree[id$=":28"]::before,
+.treeViewerAwesome .nodePedigree[id$=":30"]::before {
     border-bottom: .0307692307692308em solid #aeaca4;
     bottom: 50%;
     margin-bottom: -.0153846153846154em
@@ -40,11 +70,13 @@
     display: none
 }
 
-.treeViewerAwesome .nodePedigree[id$=":1"]::before,.treeViewerAwesome .nodePedigree[id$=":2"]::before {
+.treeViewerAwesome .nodePedigree[id$=":1"]::before,
+.treeViewerAwesome .nodePedigree[id$=":2"]::before {
     height: 1.776923076923077em
 }
 
-.treeViewerAwesome #graph0 .nodePedigree[id$=":1"]::before,.treeViewerAwesome #graph0 .nodePedigree[id$=":2"]::before {
+.treeViewerAwesome #graph0 .nodePedigree[id$=":1"]::before,
+.treeViewerAwesome #graph0 .nodePedigree[id$=":2"]::before {
     height: .6em
 }
 
@@ -80,7 +112,10 @@
     z-index: 4
 }
 
-.treeViewerAwesome .nodePedigree[id$=":3"]::before,.treeViewerAwesome .nodePedigree[id$=":4"]::before,.treeViewerAwesome .nodePedigree[id$=":5"]::before,.treeViewerAwesome .nodePedigree[id$=":6"]::before {
+.treeViewerAwesome .nodePedigree[id$=":3"]::before,
+.treeViewerAwesome .nodePedigree[id$=":4"]::before,
+.treeViewerAwesome .nodePedigree[id$=":5"]::before,
+.treeViewerAwesome .nodePedigree[id$=":6"]::before {
     background-color: #aeaca4;
     border: none;
     height: .3153846153846154em;
@@ -90,7 +125,14 @@
     width: .0307692307692308em
 }
 
-.treeViewerAwesome .nodePedigree.add[id$=":3"]::before,.treeViewerAwesome .nodePedigree.add[id$=":4"]::before,.treeViewerAwesome .nodePedigree.add[id$=":5"]::before,.treeViewerAwesome .nodePedigree.add[id$=":6"]::before,.treeViewerAwesome .nodePedigree.nodePedigreeEndOfLine[id$=":3"]::before,.treeViewerAwesome .nodePedigree.nodePedigreeEndOfLine[id$=":4"]::before,.treeViewerAwesome .nodePedigree.nodePedigreeEndOfLine[id$=":5"]::before,.treeViewerAwesome .nodePedigree.nodePedigreeEndOfLine[id$=":6"]::before {
+.treeViewerAwesome .nodePedigree.add[id$=":3"]::before,
+.treeViewerAwesome .nodePedigree.add[id$=":4"]::before,
+.treeViewerAwesome .nodePedigree.add[id$=":5"]::before,
+.treeViewerAwesome .nodePedigree.add[id$=":6"]::before,
+.treeViewerAwesome .nodePedigree.nodePedigreeEndOfLine[id$=":3"]::before,
+.treeViewerAwesome .nodePedigree.nodePedigreeEndOfLine[id$=":4"]::before,
+.treeViewerAwesome .nodePedigree.nodePedigreeEndOfLine[id$=":5"]::before,
+.treeViewerAwesome .nodePedigree.nodePedigreeEndOfLine[id$=":6"]::before {
     height: .4769230769230769em
 }
 
@@ -117,7 +159,11 @@
     width: .1692307692307692em
 }
 
-.treeViewerAwesome .nodePedigree.add::after,.treeViewerAwesome .nodePedigree.small::after,.treeViewerAwesome .nodePedigree[id$=":1"]::after,.treeViewerAwesome .nodePedigree[id$=":2"]::after,.treeViewerAwesome .nodePedigree.nodePedigreeEndOfLine::after {
+.treeViewerAwesome .nodePedigree.add::after,
+.treeViewerAwesome .nodePedigree.small::after,
+.treeViewerAwesome .nodePedigree[id$=":1"]::after,
+.treeViewerAwesome .nodePedigree[id$=":2"]::after,
+.treeViewerAwesome .nodePedigree.nodePedigreeEndOfLine::after {
     display: none
 }
 
@@ -422,22 +468,26 @@ body:not(.moveGraphOrTriggerClick) .treeViewerAwesome .closehand .nodePedigree.n
     width: .3333333333333333em
 }
 
-.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerTopLeft,.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerTopLeft span {
+.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerTopLeft,
+.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerTopLeft span {
     left: 0;
     top: 0
 }
 
-.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerTopRight,.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerTopRight span {
+.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerTopRight,
+.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerTopRight span {
     right: 0;
     top: 0
 }
 
-.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerBottomLeft,.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerBottomLeft span {
+.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerBottomLeft,
+.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerBottomLeft span {
     bottom: 0;
     left: 0
 }
 
-.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerBottomRight,.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerBottomRight span {
+.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerBottomRight,
+.treeViewerAwesome .nodePedigree .expandTree.noParents .dashed.dashedCornerBottomRight span {
     bottom: 0;
     right: 0
 }
