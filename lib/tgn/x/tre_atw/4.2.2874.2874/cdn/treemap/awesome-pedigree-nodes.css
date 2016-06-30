@@ -84,7 +84,8 @@ html {
     height: 1.569230769230769em
 }
 
-.treeViewerAwesome #graph0 .nodePedigreeNoMother[id$=":0"].nodePedigreeNoMother~.nodePedigree[id$=":1"].nodePedigreeNoMother:not(.nodePedigreeNoFather)::before,.treeViewerAwesome #graph0 .nodePedigreeNoMother[id$=":0"].nodePedigreeNoMother~.nodePedigree[id$=":1"].nodePedigreeNoMother:not(.nodePedigreeNoFather)~.nodePedigree[id$=":2"]::before,.treeViewerAwesome #graph0 .nodePedigreeNoFather[id$=":0"]:not(.nodePedigreeNoMother)~.nodePedigreeNoFather[id$=":1"].add:before,.treeViewerAwesome #graph0 .nodePedigreeNoFather[id$=":0"]:not(.nodePedigreeNoMother)~.nodePedigreeNoMother[id$=":2"]:not(.nodePedigreeNoFather)::before,.treeViewerAwesome #graph0 .nodePedigreeNoFather[id$=":0"]:not(.nodePedigreeNoMother)~.nodePedigreeNoFather[id$=":2"]:not(.nodePedigreeNoMother)::before,.treeViewerAwesome #graph0 .nodePedigreeNoMother[id$=":0"]:not(.nodePedigreeNoFather)~.nodePedigreeNoFather[id$=":1"]:not(.nodePedigreeNoParents)::before,.treeViewerAwesome #graph0 .nodePedigreeNoMother[id$=":0"]:not(.nodePedigreeNoFather)~.nodePedigreeNoFather[id$=":1"]~.nodePedigreeNoParents[id$=":2"]::before,.treeViewerAwesome #graph0 .nodePedigree[id$=":1"]:not(.nodePedigreeEndOfLine):not(.nodePedigreeNoParents):not(.nodePedigreeNoMother):not(.nodePedigreeNoFather):not(.add)::before,.treeViewerAwesome #graph0 .nodePedigree[id$=":2"]:not(.nodePedigreeEndOfLine):not(.nodePedigreeNoParents):not(.nodePedigreeNoMother):not(.nodePedigreeNoFather):not(.add)::before,.treeViewerAwesome #graph0 .nodePedigree.nodePedigreeNoMother[id$=":0"]~.nodePedigree:not(.nodePedigreeNoMother):not(.nodePedigreeNoFather)[id$=":1"]~.nodePedigree.nodePedigreeNoParents[id$=":2"]::before {
+.treeViewerAwesome #graph0 
+.nodePedigreeNoMother[id$=":0"].nodePedigreeNoMother~.nodePedigree[id$=":1"].nodePedigreeNoMother:not(.nodePedigreeNoFather)::before,.treeViewerAwesome #graph0 .nodePedigreeNoMother[id$=":0"].nodePedigreeNoMother~.nodePedigree[id$=":1"].nodePedigreeNoMother:not(.nodePedigreeNoFather)~.nodePedigree[id$=":2"]::before,.treeViewerAwesome #graph0 .nodePedigreeNoFather[id$=":0"]:not(.nodePedigreeNoMother)~.nodePedigreeNoFather[id$=":1"].add:before,.treeViewerAwesome #graph0 .nodePedigreeNoFather[id$=":0"]:not(.nodePedigreeNoMother)~.nodePedigreeNoMother[id$=":2"]:not(.nodePedigreeNoFather)::before,.treeViewerAwesome #graph0 .nodePedigreeNoFather[id$=":0"]:not(.nodePedigreeNoMother)~.nodePedigreeNoFather[id$=":2"]:not(.nodePedigreeNoMother)::before,.treeViewerAwesome #graph0 .nodePedigreeNoMother[id$=":0"]:not(.nodePedigreeNoFather)~.nodePedigreeNoFather[id$=":1"]:not(.nodePedigreeNoParents)::before,.treeViewerAwesome #graph0 .nodePedigreeNoMother[id$=":0"]:not(.nodePedigreeNoFather)~.nodePedigreeNoFather[id$=":1"]~.nodePedigreeNoParents[id$=":2"]::before,.treeViewerAwesome #graph0 .nodePedigree[id$=":1"]:not(.nodePedigreeEndOfLine):not(.nodePedigreeNoParents):not(.nodePedigreeNoMother):not(.nodePedigreeNoFather):not(.add)::before,.treeViewerAwesome #graph0 .nodePedigree[id$=":2"]:not(.nodePedigreeEndOfLine):not(.nodePedigreeNoParents):not(.nodePedigreeNoMother):not(.nodePedigreeNoFather):not(.add)::before,.treeViewerAwesome #graph0 .nodePedigree.nodePedigreeNoMother[id$=":0"]~.nodePedigree:not(.nodePedigreeNoMother):not(.nodePedigreeNoFather)[id$=":1"]~.nodePedigree.nodePedigreeNoParents[id$=":2"]::before {
     height: 1.776923076923077em
 }
 
@@ -136,12 +137,14 @@ html {
     height: .4769230769230769em
 }
 
-.treeViewerAwesome .nodePedigree[id$=":3"]::before,.treeViewerAwesome .nodePedigree[id$=":5"]::before {
+.treeViewerAwesome .nodePedigree[id$=":3"]::before,
+.treeViewerAwesome .nodePedigree[id$=":5"]::before {
     bottom: auto;
     top: 100%
 }
 
-.treeViewerAwesome .nodePedigree[id$=":4"]::before,.treeViewerAwesome .nodePedigree[id$=":6"]::before {
+.treeViewerAwesome .nodePedigree[id$=":4"]::before,
+.treeViewerAwesome .nodePedigree[id$=":6"]::before {
     bottom: 100%;
     top: auto
 }
@@ -237,7 +240,8 @@ html {
     margin: -.0307692307692308em
 }
 
-.treeViewerAwesome .nodePedigree:not(.add).nodeActive .node-bdy,.treeViewerAwesome .nodePedigree:not(.add):not(.nodeActive) .node-bdy:hover {
+.treeViewerAwesome .nodePedigree:not(.add).nodeActive .node-bdy,
+.treeViewerAwesome .nodePedigree:not(.add):not(.nodeActive) .node-bdy:hover {
     background-color: #b8d83a;
     border-color: #b8d83a;
     box-shadow: 0 .0076923076923077em .0153846153846154em rgba(0,0,0,.2);
