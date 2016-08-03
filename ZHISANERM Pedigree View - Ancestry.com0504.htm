@@ -2117,13 +2117,26 @@
 
             function doDomReady() {
                 try {
+                    // ./lib/tgn/x/tre_atw/4.2.2874.2874/cdn/treemap/log.js
                     $trees.logCreate('trees.ancestry.com/tree/error/LogJavaScriptError', '3');
-                    $trees.treeMapCreate('trVp', 'trGraph', 'trVwHd', 42446045903, '0:0', 'http://trees.ancestry.com/tree/81749066/family?cfpid=%7Bcfpid%7D', 'http://trees.ancestry.com/tree/81749066/person/%7Bpid%7D', 'http://trees.ancestry.com/tree/81749066/person/42446045903/family/pedigree/print', 'pedigree', 'http://c.mfcreative.com/TRE_ATW/4.2.2874.2874/cdn/treemap');
+                    // ./lib/tgn/x/tre_atw/4.2.2874.2874/cdn/treemap/awesome-treemap.js
+                    $trees.treeMapCreate('trVp', 'trGraph', 'trVwHd', 42446045903, '0:0', 
+                        'http://trees.ancestry.com/tree/81749066/family?cfpid=%7Bcfpid%7D', 
+                        'http://trees.ancestry.com/tree/81749066/person/%7Bpid%7D', 
+                        'http://trees.ancestry.com/tree/81749066/person/42446045903/family/pedigree/print', 
+                        'pedigree', 
+                        'http://c.mfcreative.com/TRE_ATW/4.2.2874.2874/cdn/treemap');
+                    // ./lib/tgn/x/tre_atw/4.2.2874.2874/cdn/treemap/awesome-toolbar.js
                     $trees.toolbarCreate('81749066', 'trVp', 42446045903, 42446045903, false, '', 'pgn=32799');
+                    // ./lib/tgn/x/tre_atw/4.2.2874.2874/cdn/treemap/statemgr.js
                     $trees.stateMgrCreate('http://trees.ancestry.com/tree/81749066/family/updatetmzp?view=pedigree');
+                    // ./lib/tgn/x/tre_atw/4.2.2874.2874/cdn/treemap/awesome-hovercard.js
                     $trees.hoverCardCreate('81749066', 'trHover', 'trVwHd', 42446045903, true, 'http://trees.ancestry.com/tree/81749066/family?cfpid=%7Bcfpid%7D', 'http://trees.ancestry.com/tree/81749066/person/%7Bpid%7D', 'pgn=32799', 'http://search.ancestry.com/search/RecordSearch.aspx?tid=81749066&pid=%7Bpid%7D&ssrc=pt', 'http://trees.ancestry.com/tree/81749066/person/%7Bpid%7D/hints', 'javascript:$TreesFunc.Family.showAddFamilyMemberModal("81749066", "{pid}", "&pgn=32799");', '', true, 'http://trees.ancestry.com/tree/81749066/photo/upload?fpid=42446045903&pid=%7Bpid%7D', 'http://trees.ancestry.com/tree/81749066/media/%7Boidx%7D?fpid=42446045903&pid=%7Bpid%7D', true, true, 'http://trees.ancestry.com/pt/editperson.aspx?tid=81749066&pid=%7Bpid%7D');
+                    // ./lib/tgn/x/tre_atw/4.2.2874.2874/cdn/treeutil.js
                     $trees.util.setGotoTemplate('http://trees.ancestry.com/tree/81749066/family?cfpid=%7Bcfpid%7D'.replace('{cfpid}', '{p}'));
+                    // ./lib/tgn/x/tre_atw/4.2.2874.2874/cdn/treemap/hints.js
                     $trees.hintsCreate(true, '1', '', '');
+                    // ./lib/tgn/x/tre_atw/4.2.2874.2874/cdn/treemap/ftms.js
                     $trees.ftmsCreate(false, false);
                     $(function () {
                         if ('ontouchend' in document) {
