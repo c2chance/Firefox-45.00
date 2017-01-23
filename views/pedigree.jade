@@ -1,0 +1,110 @@
+//  html5, only support modern browser, ie6 is not support
+doctype html
+html(lang="en")
+  head
+    title= appTitle
+    include ./includes/head.jade
+    //  script(type="text/javascript", src="/js/jquery-2.0.3.min.js")
+    //  link(rel='stylesheet', href='/css/bootstrap-3.0.2/css/bootstrap.min.css')
+    //  link(rel='stylesheet', href='/css/bootstrap-3.0.2/css/bootstrap-theme.min.css')
+    //  script(type="text/javascript", src="/css/bootstrap-3.0.2/js/bootstrap.min.js")
+    //  script(type="text/javascript", src="/js/blog.js")
+    //  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(charset="utf-8")
+    meta(name="viewport",content="width=device-width, initial-scale=1.0")
+    meta(name="geo.placename",content="USA")
+    meta(name="geo.position",content="37.090240;-95.712891")
+    meta(name="ICBM",content="37.090240,-95.712891")
+    meta(name="description",content="")
+    script(type="text/javascript", src="./lib/SSS_NAV/1.0.1080/Content/2.1/header.js")")./lib/SSS_NAV/1.0.1080/Content/2.1/header.js")
+    script(type='text/javascript').
+      $(function () {
+        function setupHeader(numTries) {
+            if (typeof header !== 'undefined') {
+                    header.init({
+                        'userId': '02473873-0006-0000-0000-000000000000',
+                        'rootDomain': 'ancestry.com',
+                        'ajaxUrl': '//navigation.ancestry.com/ajax/userdata/2.1',
+                        'dnaUrl': '//dna.ancestry.com',
+                        'userAjaxUrl': '//navigation.ancestry.com/ajax/UserInfo',
+                        'clearUserDataUrl': '//navigation.ancestry.com/ajax/Clear',
+                        'clearCartUrl': '//navigation.ancestry.com/ajax/ClearCart',
+                        'treesAjaxUrl': '//navigation.ancestry.com/ajax/Trees',
+                        'dnaNotificationsAjaxUrl': '//navigation.ancestry.com/ajax/DnaHints',
+                        'hintsAjaxUrl': '//navigation.ancestry.com/ajax/Hints',
+                        'messagesAjaxUrl': '//navigation.ancestry.com/ajax/Messages',
+                        'cacheDomain': '//c.mfcreative.com',
+                        'isLoggedIn': 'True' == 'True',
+                        'selectedTabName': 'Trees',
+                        'facebookUrl': '//fbsso.ajax.ancestry.com/SignOn/Login',
+                        'hintsClearAllUrl': '//navigation.ancestry.com/ajax/ClearAllHints',
+                        'addTracking': 'False' == 'True',
+                        'showHireAnExpertWarning': 'False' == 'True',
+                        'cachedData': {
+                            "user": {
+                                "name": "Chance Chih",
+                                "image": "//mediasvc.ancestry.com/v2/image/namespaces/60564/media/9e713154-40f2-43a8-8b19-935148fb9f01?Client=Navigation&maxWidth=40&maxHeight=40",
+                                "subscribeUrl": "http://www.ancestry.com/t7364/rd.ashx",
+                                "subscribeText": "Subscribe",
+                                "isFullAccessFreeTrialer": false
+                            },
+                            "trees": {
+                                "success": true,
+                                "menuitems": [{
+                                    "text": "ZhiSanErm Family Tree",
+                                    "url": "http://trees.ancestry.com/pt/pedigree.aspx?tid=81749066"
+                                }, {
+                                    "text": "Zhisanhou Family Tree",
+                                    "url": "http://trees.ancestry.com/pt/pedigree.aspx?tid=80252657"
+                                }, {
+                                    "text": "Create & Manage Trees",
+                                    "url": "http://trees.ancestry.com/tree"
+                                }]
+                            },
+                            "hintcount": 7,
+                            "messagecount": 0
+                        }
+                    });
+                } else if (numTries < 15) {
+                    setTimeout(function () {
+                        setupHeader(numTries + 1);
+                    }, 200);
+                }
+            }
+            setupHeader(0);
+      });
+  // end of setupHeader() definition
+    link(rel="stylesheet", href="./lib/SSS_NAV/1.0.1080/Content/2.1/header.css")
+    link(rel="stylesheet", href="./lib/SSS_FTB/1.1.147/CDN/css/v1.css")
+  body
+    #wrap
+      .container
+        h1.page-header= appTitle
+        p.lead Welcome to example from Express.js Experience by&nbsp;
+          a(href='http://twitter.com/azat_co') @azat_co
+          |. Please enjoy.
+        block page
+        block header
+          div
+            include includes/menu
+        block alert
+          div.alert.alert-warning.hidden
+        .content
+          block content
+    block footer
+      footer
+        .container
+          p
+            | Copyright &copy; 2014 | Issues? Submit to&#32;
+            a(href="https://github.com/azat-co/blog-express/issues") GitHub
+            | .
+  body
+    #ptFS.pullToFullScreen
+      .flexContainer
+        #BannerRegion
+        #HeaderRegion
+        - var classes = ['page', 'pagePadded', 'TabNav']
+        div(class=classes)
+        #ZN_aWTeGdcZfT4VBn7
+      .responsiveFlag
+    #FooterRegion
